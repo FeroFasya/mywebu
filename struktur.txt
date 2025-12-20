@@ -1,0 +1,13 @@
+src/
+├── assets/           (Taruh gambar/video di sini)
+├── data/
+│   └── data.js       (Kita pindahkan semua text & array ke sini)
+├── components/
+│   ├── BottomNav.jsx (Menu Navigasi ala App)
+│   ├── Navbar.jsx    (Header Logo atas)
+├── pages/
+│   ├── Home.jsx
+│   ├── Catalog.jsx
+│   ├── Pricing.jsx
+│   └── Profile.jsx
+└── App.jsx           (Otak utamanya)
