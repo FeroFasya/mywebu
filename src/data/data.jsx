@@ -106,7 +106,23 @@ export const specialItems = [
     image: "/images/urban.mp4", 
     desc: "Landing page kuliner 'Next Level'. Dilengkapi fitur Filter Menu & Maps Dark Mode.",
     features: ["Fitur Filter Makanan/Minuman", "Embed Google Maps", "Direct Link Gofood"]
-  } 
+  },
+
+  {
+  id: 's4',
+  title: "Soft Archive / Memory Room",
+  theme: "Dreamy Pastel Edition",
+  category: "Digital Gallery",
+  price: "Rp300.000",
+  image: "/images/gallerydigital.mp4",
+  desc: "Galeri online untuk menampilkan karya terpilih dengan tampilan bersih dan emosional.",
+  features: [
+    "Smooth Fade Transition",
+    "Pastel Gradient Background",
+    "Minimal Caption Overlay",
+    "Ambient Hover Animation"
+  ]
+}
 ];
 
 // MIKI: Update Pricing Tiers (Full Detail Visual)
