@@ -15,7 +15,7 @@ export const portfolioItems = [
     id: 1,
     title: "The Minimalist",
     category: "Personal Brand",
-    image: "/images/1.jpg", 
+    image: "/images/minimals.jpg", 
     color: "from-purple-500 to-indigo-600", 
     desc: "Desain bersih untuk konten kamu yang ingin fokus pada portofolio.",
     demoLink: "https://client-fero.netlify.app"
@@ -23,7 +23,7 @@ export const portfolioItems = [
   {
     id: 2,
     title: "Cyber Gamer",
-    category: "Gaming",
+    category: "Gaming / Creator",
     image: "/images/gaming.jpg", 
     color: "from-emerald-400 to-cyan-600",
     desc: "Tema futuristik neon untuk streamer dan gamer profesional.",
@@ -50,7 +50,7 @@ export const portfolioItems = [
   {
     id: 5,
     title: "Elegant Business",
-    category: "UMKM/Jasa",
+    category: "UMKM / Jasa",
     image: "/images/business.jpg", 
     color: "from-orange-400 to-rose-600",
     desc: "Tampilan profesional untuk membangun kepercayaan klien bisnis.",
@@ -74,6 +74,87 @@ export const portfolioItems = [
     desc: "Tema retro pixel art untuk seniman digital dan ilustrator.",
     demoLink: "https://pixelartfero.netlify.app/"
   },
+
+  {
+    id: 8,
+    title: "Paws & Whiskers",
+    category: "Pet Lovers / Business",
+    image: "/images/paws.jpg", // Jangan lupa SS webnya, save jadi paws.jpg
+    color: "from-orange-400 to-teal-400", // Gradasi Ceria (Orange) ke Segar (Teal)
+    desc: "Tema super gemoy dengan desain rounded dan animasi playful. Spesial buat Pet Shop & Grooming.",
+    demoLink: "https://pawsfero.netlify.app/"
+  },
+
+  {
+    id: 9,
+    title: "Midnight Violet",
+    category: "Tech / Luxury",
+    image: "/images/violet.jpg", // Jangan lupa SS, save as violet.jpg
+    color: "from-purple-900 to-indigo-900", // Gradasi Gelap Elegan
+    desc: "Tema Glassmorphism mewah dengan nuansa Dark Neon. Cocok untuk Web3, Tech, atau Personal Brand futuristik.",
+    demoLink: "https://violetfero.netlify.app/"
+  },
+
+  {
+    id: 10,
+    title: "The Bistro",
+    category: "F&B Business",
+    image: "/images/bistro.jpg", // Jangan lupa SS, save as bistro.jpg
+    color: "from-red-500 to-yellow-500", // Merah ke Kuning (Lapar!)
+    desc: "Tema kuliner menggugah selera Dilengkapi tombol Direct Order (WA/GoFood) untuk konversi penjualan instan dengan animasi 'Spinning Plate'.",
+    demoLink: "https://bistrofero.netlify.app/"
+  },
+
+  {
+    id: 11,
+    title: "Streamer Hub",
+    category: "Gaming / Creator",
+    image: "/images/streamer.jpg", // Jangan lupa SS, save as streamer.jpg
+    color: "from-purple-600 to-pink-500", // Ungu Twitch ke Pink Neon
+    desc: "Tema broadcast modern untuk Streamer & VTuber. Fitur lengkap: Jadwal Live, Embed Video, & Tombol Donasi.",
+    demoLink: "https://streamerfero.netlify.app/"
+  },
+
+  {
+    id: 12,
+    title: "Glow Studio",
+    category: "UMKM / Jasa",
+    image: "/images/glow.jpg", // Jangan lupa SS, save as glow.jpg
+    color: "from-orange-200 to-yellow-200", // Warna Cream/Gold
+    desc: "Tema salon kecantikan premium dengan nuansa Nude & Gold. Fitur Pricelist Service & Booking WhatsApp.",
+    demoLink: "https://glowfero.netlify.app/"
+  },
+
+  {
+    id: 13,
+    title: "The Garage",
+    category: "UMKM / Jasa",
+    image: "/images/garage.jpg", // Jangan lupa SS, save as garage.jpg
+    color: "from-gray-900 to-red-600", // Hitam ke Merah Racing
+    desc: "Tema maskulin industrial untuk Bengkel, Barbershop, atau Gym. Desain bold dengan tipografi yang kuat.",
+    demoLink: "https://garagefero.netlify.app/"
+  },
+
+  {
+    id: 14,
+    title: "EduFocus",
+    category: "Education / Course",
+    image: "/images/edu.jpg", 
+    color: "from-blue-600 to-indigo-500", 
+    // Miki perjelas fungsi landing page-nya
+    desc: "Landing page promosi kursus/bimbel. Fitur katalog kelas dengan tombol Direct WhatsApp untuk pendaftaran manual.",
+    demoLink: "https://edufero.netlify.app/"
+  },
+
+  {
+    id: 15,
+    title: "Travel Journal",
+    category: "Hobby / Blog",
+    image: "/images/travel.jpg", // Jangan lupa SS, save as travel.jpg
+    color: "from-green-600 to-emerald-500", // Hijau Alam
+    desc: "Tema blog travel dengan gaya editorial majalah. Fitur Parallax Hero dan layout cerita zig-zag yang estetik.",
+    demoLink: "https://travelfero.netlify.app/"
+  }
 ];
 // Data Special Edition
 export const specialItems = [
