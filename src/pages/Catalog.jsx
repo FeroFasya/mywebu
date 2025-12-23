@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { ExternalLink, Flame, Layout, Monitor, MousePointerClick } from 'lucide-react';
+import { ExternalLink, Flame, Layout, Monitor } from 'lucide-react';
 import { portfolioItems, specialItems, USER_INFO } from '../data/data';
 
 const Catalog = ({ onNavigate, setSelectedTheme }) => {
   const [activeCategory, setActiveCategory] = useState('All');
   
-  // STATE BARU: Untuk melacak card mana yang overlay-nya lagi "Nyalain" (Stay)
-  // Ini solusi biar di HP nggak perlu tahan jari.
+  // STATE MOBILE: Melacak card mana yang overlay-nya aktif
   const [activeCardId, setActiveCardId] = useState(null);
 
   const handleSelectStandard = (item) => {
@@ -20,12 +19,12 @@ const Catalog = ({ onNavigate, setSelectedTheme }) => {
     window.open(waLink, '_blank');
   };
 
-  // Logic Toggle untuk Mobile (Tap sekali buka, Tap lagi tutup)
+  // Logic Toggle: Tap sekali buka, Tap lagi tutup
   const toggleOverlay = (id) => {
     if (activeCardId === id) {
-      setActiveCardId(null); // Tutup kalau udah kebuka
+      setActiveCardId(null);
     } else {
-      setActiveCardId(id); // Buka yang baru
+      setActiveCardId(id);
     }
   };
 
@@ -53,7 +52,7 @@ const Catalog = ({ onNavigate, setSelectedTheme }) => {
         <p className="text-neutral-400 text-xs">Sentuh gambar untuk melihat detail.</p>
       </div>
 
-      {/* --- SECTION 1: SPECIAL DROP (AMAN - TIDAK DIUBAH) --- */}
+      {/* --- SECTION 1: SPECIAL DROP (AMAN) --- */}
       {filteredSpecial.length > 0 && (
         <div>
             <div className="flex items-center gap-2 mb-4 px-1">
@@ -102,7 +101,7 @@ const Catalog = ({ onNavigate, setSelectedTheme }) => {
         </div>
       )}
 
-      {/* --- SECTION 2: STANDARD COLLECTION (UPDATED MIKI) --- */}
+      {/* --- SECTION 2: STANDARD COLLECTION (BUG FIX & ALIGNMENT UPDATE) --- */}
       <div>
         <div className="flex items-center justify-between mb-4 px-1">
           <h3 className="text-sm font-bold text-white flex items-center gap-2">
@@ -133,15 +132,14 @@ const Catalog = ({ onNavigate, setSelectedTheme }) => {
           {filteredStandard.map((item) => (
             <div key={item.id} className="break-inside-avoid">
               
-              {/* CARD CONTAINER (BUNGKUS LUAR) */}
               <div className="rounded-xl border border-neutral-800 bg-neutral-900 overflow-hidden shadow-sm transition-all hover:border-neutral-600">
                 
-                {/* --- 1. IMAGE AREA (INTERAKTIF) --- */}
+                {/* INTERACTIVE IMAGE AREA */}
                 <div 
                     className="relative group cursor-pointer"
                     onClick={() => toggleOverlay(item.id)}
                 >
-                    {/* Gambar Utama */}
+                    {/* Gambar */}
                     {item.image ? (
                         <img 
                           src={item.image} 
@@ -152,47 +150,44 @@ const Catalog = ({ onNavigate, setSelectedTheme }) => {
                         <div className={`w-full h-32 bg-gradient-to-br ${item.color}`}></div>
                     )}
 
-                    {/* OVERLAY HITAM (Judul & Desc) */}
-                    {/* Muncul jika: Hover di Desktop ATAU activeCardId cocok (Tap di HP) */}
+                    {/* OVERLAY (PERBAIKAN BUG & ALIGNMENT) */}
                     <div 
-                        className={`absolute inset-0 bg-neutral-950/90 flex flex-col justify-center items-center p-4 text-center transition-opacity duration-300
-                        ${activeCardId === item.id ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}
+                        className={`absolute inset-0 bg-neutral-950/90 flex flex-col justify-center p-5 transition-all duration-300
+                        ${activeCardId === item.id 
+                            ? 'opacity-100 pointer-events-auto' // Mobile Active: Kelihatan & BISA DIKLIK
+                            : 'opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto'} // Default: Invisible & HANTU (Gak bisa diklik)
                         `}
                     >
-                        
-                        <span className="text-[9px] font-bold text-indigo-400 uppercase tracking-widest mb-1.5">
-                          {item.category}
-                        </span>
-                        
-                        <h3 className="font-bold text-white text-sm mb-3">
-                          {item.title}
-                        </h3>
-                        
-                        {/* MIKI: Text Justify (Rata Kanan Kiri) biar Elegan */}
-                        <p className="text-[10px] text-neutral-300 mb-5 leading-relaxed text-justify px-1 line-clamp-5">
-                          {item.desc}
-                        </p>
-                        
-                        {/* Tombol Select (Stop Propagation biar gak ngetrigger toggle gambar) */}
-                        <button 
-                          onClick={(e) => {
-                            e.stopPropagation(); 
-                            handleSelectStandard(item);
-                          }}
-                          className="px-5 py-2 bg-indigo-600 text-white text-[10px] font-bold rounded-full shadow-lg hover:bg-indigo-500 transition-colors"
-                        >
-                          Pilih Desain
-                        </button>
-
-                        {/* Hint kecil buat user HP */}
-                        <span className="absolute bottom-2 text-[8px] text-neutral-600 animate-pulse md:hidden">
-                            Tap again to close
-                        </span>
+                        {/* Wrapper Konten (Items Start = Rata Kiri) */}
+                        <div className="flex flex-col items-start w-full">
+                            <span className="text-[9px] font-bold text-indigo-400 uppercase tracking-widest mb-1.5 text-left">
+                              {item.category}
+                            </span>
+                            
+                            <h3 className="font-bold text-white text-sm mb-3 text-left w-full">
+                              {item.title}
+                            </h3>
+                            
+                            {/* Text Justify (Rata Kanan Kiri) */}
+                            <p className="text-[10px] text-neutral-300 mb-5 leading-relaxed text-justify w-full line-clamp-6">
+                              {item.desc}
+                            </p>
+                            
+                            {/* Tombol Full Width */}
+                            <button 
+                              onClick={(e) => {
+                                e.stopPropagation(); // Mencegah toggle gambar ketutup
+                                handleSelectStandard(item);
+                              }}
+                              className="w-full py-2 bg-indigo-600 text-white text-[10px] font-bold rounded-lg shadow-lg hover:bg-indigo-500 transition-colors"
+                            >
+                              Pilih Desain
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                {/* --- 2. PREVIEW BAR (DI BAWAH GAMBAR) --- */}
-                {/* Warnanya dibedain dikit (neutral-950) biar kontras sama border */}
+                {/* PREVIEW BAR */}
                 <div className="bg-neutral-950 py-2.5 px-3 border-t border-neutral-800 flex justify-center">
                     <a 
                       href={item.demoLink}
