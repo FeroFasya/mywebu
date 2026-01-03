@@ -228,55 +228,77 @@ export const specialItems = [
   }
 ];
 
-// MIKI: Update Pricing Tiers (Full Detail Visual)
+// Miki: Final Pricing - The "Know Your Worth" Edition
 export const pricingTiers = [
   {
     id: 'basic',
-    name: "Paket Basic",
+    name: "Paket Pelajar",
     price: "Rp150.000",
-    desc: "Hemat & Cepat. Pilihan cerdas pelajar.",
-    bestFor: "Pelajar / Tugas Sekolah / LinkBio",
+    desc: "Simpel, cepat, dan tanpa biaya bulanan.",
+    bestFor: "Tugas Sekolah / Link Bio",
     icon: <Smartphone size={20} className="text-blue-400" />,
-    features: ["Landing Page 3 Section", "Desain Modern & Responsif", "Form Kontak ke WA", "Hosting Netlify (Gratis Selamanya)"],
+    features: [
+      "1 Halaman Website Simpel", 
+      "Tampilan Bagus di HP & Laptop", 
+      "Tombol Chat ke WhatsApp", 
+      "Hosting Gratis Selamanya"
+    ],
     highlight: false,
     borderColor: "border-neutral-800"
   },
   {
     id: 'standard',
-    name: "Paket Standard",
+    name: "Personal Branding",
     price: "Rp250.000",
-    desc: "Paling pas buat portofolio lengkap.",
+    desc: "Tampil beda dan terlihat profesional.",
     bestFor: "Mahasiswa / Fresh Grad / Jobseeker",
     icon: <Star size={20} className="text-yellow-400" />,
-    features: ["Semua Fitur Basic", "Ganti Warna & Font (Minor)", "Galeri Foto (Max 8)", "Layout Lebih Detail", "Embed Sosmed/Video"],
+    features: [
+      "Semua Fitur Paket Pelajar", 
+      "Bebas Request Warna & Font", 
+      "Galeri Portofolio (Pamer Karya)", 
+      "Sambung ke IG & TikTok",
+      "Struktur Ramah Google (SEO Basic)"
+    ],
     highlight: true,
     borderColor: "border-yellow-500/50"
   },
   {
     id: 'premium',
-    name: "Paket Premium",
-    price: "Rp400.000",
-    desc: "Standout & terlihat mewah.",
-    bestFor: "Content Creator / Selebgram",
+    name: "Paket Premium", // Or "Pro Creator" if you want to sound cool
+    price: "Rp550.000",
+    desc: "Tampilan mewah, interaktif, dan terima beres.", // Changed to emphasize convenience
+    bestFor: "Influencer / Selebgram",
     icon: <Shield size={20} className="text-purple-400" />,
-    features: ["Semua Fitur Standard", "5+ Section (Long Page)", "Animasi Interaktif (Scroll Reveal)", "Galeri Foto (Max 15)", "Prioritas Pengerjaan (Express)"],
+    features: [
+      "Desain 'Long Page' & Animasi", // Combined visual features
+      "Fitur Auto-Play Musik/Video",
+      "Galeri Foto Besar (Max 15)",
+      "Gratis Setup Hosting (Terima Beres)", // KEY POINT: They don't need to watch a tutorial
+      "Dapat Akun Gmail & Netlify Pribadi"   // KEY POINT: You give them the keys
+    ],
     highlight: false,
     borderColor: "border-indigo-500"
   },
   {
     id: 'exclusive',
-    name: "Exclusive Custom",
-    price: "Start Rp750.000",
-    desc: "Desain unik, tidak pakai template.",
-    bestFor: "UMKM Serius / Brand / Company",
+    name: "Bisnis Eksklusif",
+    price: "Mulai Rp1.250.000",
+    desc: "Investasi aset digital serius untuk usahamu.",
+    bestFor: "UMKM / Brand / Perusahaan",
     icon: <Crown size={20} className="text-amber-400" />,
-    features: ["Full Custom Layout (By Request)", "Fitur Khusus (Filter/Search Sederhana)", "Revisi Design Lebih Banyak", "Konsultasi Mendalam", "Prioritas VIP"],
+    features: [
+      "Gratis Domain .COM (1 Tahun)", 
+      "Email Bisnis (admin@namausaha.com)", 
+      "Desain Premium (Tanpa Template)", 
+      "Terdaftar di Google Maps", 
+      "Garansi Maintenance 1 Bulan"
+    ],
     highlight: false,
     borderColor: "border-amber-500/80",
     isSpecial: true 
   }
 ];
-
 // FAQ Data
 export const faqs = [
   {

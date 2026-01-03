@@ -1,11 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import { CheckCircle, MessageCircle, X, Crown, ArrowRight, Sparkles } from 'lucide-react';
+import { CheckCircle, MessageCircle, X, Crown, ArrowRight, Sparkles, Minus, ChevronDown, ChevronUp } from 'lucide-react';
 import { pricingTiers, portfolioItems, USER_INFO } from '../data/data';
+
+// --- MIKI: DATA FOR COMPARISON TABLE ---
+// --- MIKI: DATA FOR COMPARISON TABLE ---
+const comparisonData = [
+  // New Row added at the top to make it clear immediately
+  { label: "Data Input & Setup", basic: true, standard: true, premium: true, exclusive: true }, 
+  { label: "Website Pages", basic: "1 Page", standard: "1 Page", premium: "Long Page", exclusive: "Custom" },
+  { label: "Design Style", basic: "Template", standard: "Custom Colors", premium: "Premium Anim.", exclusive: "Full Custom" },
+  { label: "Photos / Gallery", basic: "Max 3", standard: "Max 8", premium: "Max 15", exclusive: "Unlimited" },
+  { label: "Domain (.com)", basic: false, standard: false, premium: false, exclusive: true },
+  { label: "Business Email", basic: false, standard: false, premium: false, exclusive: true },
+  { label: "Music / Video / Gmaps", basic: false, standard: false, premium: true, exclusive: true },
+  { label: "Revision Rounds", basic: "0", standard: "1 (Minor)", premium: "2 (Major)", exclusive: "3 (VIP)" },
+  { label: "Delivery Time", basic: "3-5 Days", standard: "3-5 Days", premium: "48 Hours", exclusive: "1 Week+" },
+  { label: "Ownership", basic: "Code Only", standard: "Code Only", premium: "Gmail Key", exclusive: "Full Access" },
+];
 
 const Pricing = ({ selectedTheme }) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [localTheme, setLocalTheme] = useState(null);
+  const [showComparison, setShowComparison] = useState(false);
 
   useEffect(() => {
     if (selectedTheme) {
@@ -32,22 +49,38 @@ const Pricing = ({ selectedTheme }) => {
     return `https://wa.me/${USER_INFO.phone}?text=${encodeURIComponent(message)}`;
   };
 
+  // Helper to render table cell content with specific logic
+  const renderCell = (value) => {
+    if (value === true) return <div className="flex justify-center"><CheckCircle size={18} className="text-green-500" /></div>;
+    if (value === false) return <div className="flex justify-center"><Minus size={18} className="text-neutral-700" /></div>;
+    return <span className="text-xs font-medium text-neutral-300">{value}</span>;
+  };
+
+  // Helper to get header color based on tier index
+  const getHeaderColor = (index) => {
+    const colors = [
+      'text-blue-400',   // Basic
+      'text-yellow-400', // Standard
+      'text-purple-400', // Premium
+      'text-amber-400'   // Exclusive
+    ];
+    return colors[index] || 'text-white';
+  };
+
   return (
     <div className="space-y-8 pb-8 animate-fade-in">
       
       {/* Header Section */}
        <div>
          <h2 className="text-2xl font-bold text-white">
-          Invesasi{" "}
+          Investasi{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-cyan-300">
             Terbaik
           </span>
         </h2>
-
           <p className="text-neutral-400 text-xs">Pilih paket sesuai kebutuhanmu sekarang.</p>
         </div>
       
-
       {/* Pricing Cards */}
       <div className="space-y-6">
         {pricingTiers.map((tier) => (
@@ -59,7 +92,6 @@ const Pricing = ({ selectedTheme }) => {
               ${tier.isSpecial ? 'bg-gradient-to-br from-neutral-900 to-amber-950/30 border-amber-500/50 shadow-lg shadow-amber-500/10' : ''}
             `}
           >
-            
             {/* Badges */}
             {tier.highlight && (
               <div className="absolute -top-3 right-4 bg-gradient-to-r from-indigo-600 to-indigo-500 text-white text-[10px] font-bold px-4 py-1.5 rounded-full shadow-lg flex items-center gap-1">
@@ -80,7 +112,6 @@ const Pricing = ({ selectedTheme }) => {
                 <div className={`text-2xl font-bold mt-1 ${tier.isSpecial ? 'text-amber-300' : 'text-white'}`}>
                   {tier.price}
                 </div>
-                
                 {tier.bestFor && (
                   <div className="mt-3 inline-block bg-neutral-800/80 px-3 py-1.5 rounded-lg text-[11px] text-neutral-400 font-medium border border-neutral-700/50">
                     Cocok buat: <span className={tier.isSpecial ? "text-amber-200 font-semibold" : "text-white font-semibold"}>{tier.bestFor}</span>
@@ -92,12 +123,10 @@ const Pricing = ({ selectedTheme }) => {
               </div>
             </div>
             
-            {/* Description */}
             <p className="text-xs text-neutral-400 mb-5 italic border-l-2 border-neutral-700 pl-4 py-1">
               "{tier.desc}"
             </p>
 
-            {/* Features List */}
             <ul className="space-y-3 mb-6">
               {tier.features.map((feat, i) => (
                 <li key={i} className="flex items-start gap-3 text-sm text-neutral-300">
@@ -110,7 +139,6 @@ const Pricing = ({ selectedTheme }) => {
               ))}
             </ul>
             
-            {/* CTA Button */}
             <button 
               onClick={() => handleOrderClick(tier)}
               className={`w-full font-bold py-3.5 rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2 group
@@ -128,22 +156,66 @@ const Pricing = ({ selectedTheme }) => {
         ))}
       </div>
       
-        
-     
+      {/* --- MIKI: REFINED COMPARISON TABLE --- */}
+      <div className="py-4">
+        <button 
+          onClick={() => setShowComparison(!showComparison)}
+          className="mx-auto flex items-center gap-2 text-sm text-neutral-400 hover:text-white transition-colors bg-neutral-900 px-4 py-2 rounded-full border border-neutral-800"
+        >
+          {showComparison ? "Sembunyikan Perbandingan" : "Lihat Perbandingan Lengkap"}
+          {showComparison ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+        </button>
+
+        {showComparison && (
+          <div className="mt-6 overflow-x-auto rounded-2xl border border-neutral-800 bg-neutral-900/50 animate-fade-in-up">
+             {/* Added min-w-[600px] to force scroll on small screens instead of squishing */}
+             <table className="w-full text-left border-collapse min-w-[600px]">
+               <thead>
+                 <tr className="border-b border-neutral-800 bg-neutral-900">
+                   <th className="p-4 text-xs font-bold text-neutral-500 uppercase tracking-wider sticky left-0 bg-neutral-900 z-10 w-1/4">
+                     Fitur
+                   </th>
+                   {pricingTiers.map((tier, index) => (
+                     // Removed .split() and added whitespace-nowrap
+                     <th key={tier.id} className={`p-4 text-xs font-bold text-center uppercase tracking-wider whitespace-nowrap ${getHeaderColor(index)}`}>
+                       {tier.name}
+                     </th>
+                   ))}
+                 </tr>
+               </thead>
+               <tbody className="divide-y divide-neutral-800">
+                 {comparisonData.map((row, idx) => (
+                   <tr key={idx} className="hover:bg-neutral-800/30 transition-colors">
+                     <td className="p-4 text-xs font-medium text-neutral-300 sticky left-0 bg-neutral-900/95 z-10 border-r border-neutral-800/50 whitespace-nowrap">
+                       {row.label}
+                     </td>
+                     {/* Added min-w to cells to prevent squishing */}
+                     <td className="p-4 text-center min-w-[100px]">{renderCell(row.basic)}</td>
+                     <td className="p-4 text-center min-w-[100px]">{renderCell(row.standard)}</td>
+                     <td className="p-4 text-center min-w-[100px]">{renderCell(row.premium)}</td>
+                     <td className="p-4 text-center min-w-[100px]">{renderCell(row.exclusive)}</td>
+                   </tr>
+                 ))}
+               </tbody>
+             </table>
+          </div>
+        )}
+      </div>
+
        {/* Elegant Divider */}
       <div className="flex items-center py-4">
         <div className="h-px flex-1 bg-neutral-800"></div>
             <span className="px-4 text-xs text-neutral-500 font-medium">ATAU</span>
             <div className="h-px flex-1 bg-neutral-800"></div>
       </div>
+      
        {/* Footer Link */}
       <div className="bg-neutral-950 p-5 rounded-2xl border border-dashed border-neutral-700 hover:border-neutral-500 transition-colors">
          <div className="flex justify-between items-start mb-3"><div><h3 className="text-base font-bold text-white">Beli Template Saja</h3><p className="text-xs text-neutral-400">Dapat Source Code, edit sendiri.</p></div><span className="text-[10px] font-bold bg-green-900/30 text-green-400 px-2 py-1 rounded border border-green-900">Hemat</span></div>
           <a href="https://lynk.id/fasuya" target="_blank" rel="noreferrer" className="w-full block text-center text-neutral-300 hover:text-white text-sm font-medium py-2 rounded-lg transition-colors hover:bg-neutral-900">Beli via Lynk.id (Start 50rb) &rarr;</a>
       </div>
 
-
-      {/* Modal Popup */}
+      {/* Modal Popup (unchanged, but included for completeness) */}
       {showModal && selectedPackage && (
         <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center sm:p-4">
           <div 
@@ -152,8 +224,6 @@ const Pricing = ({ selectedTheme }) => {
           ></div>
           
           <div className="relative bg-neutral-900 border-t sm:border border-neutral-700 w-full max-w-lg sm:rounded-2xl rounded-t-3xl p-6 shadow-2xl animate-fade-in-up max-h-[90vh] overflow-y-auto">
-            
-            {/* Close Button */}
             <button 
               onClick={() => setShowModal(false)} 
               className="absolute top-4 right-4 text-neutral-500 hover:text-white bg-neutral-800 hover:bg-neutral-700 rounded-full p-1.5 transition-colors"
@@ -161,7 +231,6 @@ const Pricing = ({ selectedTheme }) => {
               <X size={20} />
             </button>
 
-            {/* Modal Header */}
             <div className="mb-6 border-b border-neutral-800 pb-4">
               <div className="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-2">
                 Konfirmasi Pesanan
@@ -174,9 +243,7 @@ const Pricing = ({ selectedTheme }) => {
               </p>
             </div>
 
-            {/* Design Selection Logic */}
             {selectedPackage.id === 'exclusive' ? (
-              // Exclusive Package Display
               <div className="bg-gradient-to-br from-amber-500/10 to-amber-600/5 border border-amber-500/30 p-5 rounded-xl text-center mb-6">
                 <Crown size={32} className="text-amber-400 mx-auto mb-3" />
                 <p className="text-sm text-amber-200 font-bold mb-2">
@@ -187,16 +254,13 @@ const Pricing = ({ selectedTheme }) => {
                 </p>
               </div>
             ) : (
-              // Regular Package with Design Selection
               <div className="mb-6">
                 <h3 className="text-sm font-bold text-neutral-300 mb-4 flex items-center gap-2">
                   <span className="w-1 h-4 bg-indigo-500 rounded-full"></span>
                   Pilih Base Desain (Wajib)
                 </h3>
                 
-                {/* Design Grid */}
                 <div className="grid grid-cols-2 gap-3 mb-4">
-                  {/* Consultation Option */}
                   <div 
                     onClick={() => setLocalTheme(null)}
                     className={`cursor-pointer rounded-xl p-4 border-2 flex flex-col items-center justify-center gap-2 text-center h-28 transition-all
@@ -214,7 +278,6 @@ const Pricing = ({ selectedTheme }) => {
                     )}
                   </div>
 
-                  {/* Portfolio Items */}
                   {portfolioItems.map((item) => (
                     <div 
                       key={item.id}
@@ -250,21 +313,19 @@ const Pricing = ({ selectedTheme }) => {
                   ))}
                 </div>
 
-                {/* Feedback Text */}
                 <div className="bg-neutral-800/50 rounded-lg p-3 space-y-1">
                   <p className="text-[11px] text-center font-medium text-neutral-300">
                     {localTheme 
                       ? `✓ Desain terpilih: ${localTheme.title}` 
                       : "⚡ Kamu memilih untuk diskusi/konsultasi dulu"}
                   </p>
-                  <p className="text-[10px] text-center italic text-neutral-500">
+                  <p className="text-xs text-center italic text-neutral-500 text-[10px]">
                     Setiap desain boleh custom warna, konsul di chat ya! 🎨
                   </p>
                 </div>
               </div>
             )}
 
-            {/* WhatsApp CTA Button */}
             <a 
               href={generateWALink()}
               target="_blank" 
