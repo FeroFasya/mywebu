@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { ExternalLink, Flame, Layout, Monitor } from 'lucide-react';
-import { portfolioItems, specialItems, USER_INFO } from '../data/data';
+import { Flame, Layout, Monitor } from 'lucide-react';
+import { portfolioItems, specialItems, USER_INFO, categoryStyles } from '../data/data';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Catalog = ({ onNavigate, setSelectedTheme }) => {
+  const { t } = useLanguage();
   const [activeCategory, setActiveCategory] = useState('All');
-  
-  // STATE MOBILE: Melacak card mana yang overlay-nya aktif
   const [activeCardId, setActiveCardId] = useState(null);
 
   const handleSelectStandard = (item) => {
@@ -19,13 +19,8 @@ const Catalog = ({ onNavigate, setSelectedTheme }) => {
     window.open(waLink, '_blank');
   };
 
-  // Logic Toggle: Tap sekali buka, Tap lagi tutup
   const toggleOverlay = (id) => {
-    if (activeCardId === id) {
-      setActiveCardId(null);
-    } else {
-      setActiveCardId(id);
-    }
+    setActiveCardId(activeCardId === id ? null : id);
   };
 
   const categories = ["All", ...new Set(portfolioItems.map(item => item.category))];
@@ -39,33 +34,33 @@ const Catalog = ({ onNavigate, setSelectedTheme }) => {
     : specialItems.filter(item => item.category === activeCategory);
 
   return (
-    <div className="space-y-8 pb-8 animate-fade-in">
+    <div className="space-y-10 pb-12 animate-fade-in overflow-x-hidden">
       
-      {/* HEADER */}
+      {/* --- HEADER --- */}
       <div>
-        <h2 className="text-2xl font-bold text-white">
+        <h2 className="text-2xl font-bold text-white dark:text-light-text">
           Gallery{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-cyan-300">
             Desain
           </span>
         </h2>
-        <p className="text-neutral-400 text-xs">Sentuh gambar untuk melihat detail.</p>
+        <p className="text-neutral-400 dark:text-neutral-600 text-xs">Sentuh gambar untuk melihat detail.</p>
       </div>
 
-      {/* --- SECTION 1: SPECIAL DROP (AMAN) --- */}
+      {/* --- SECTION 1: LIMITED EDITION --- */}
       {filteredSpecial.length > 0 && (
         <div>
             <div className="flex items-center gap-2 mb-4 px-1">
             <Flame size={18} className="text-purple-500 fill-purple-500 animate-pulse" />
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider">
+            <h3 className="text-sm font-bold text-white dark:text-light-text uppercase tracking-wider">
                 {activeCategory === 'All' ? 'Limited / Special Edition' : `Special ${activeCategory}`}
             </h3>
             </div>
 
             <div className="flex overflow-x-auto gap-4 pb-4 -mx-6 px-6 scrollbar-hide snap-x snap-mandatory">
             {filteredSpecial.map((item) => (
-                <div key={item.id} className="snap-center shrink-0 w-[85vw] sm:w-80 relative bg-neutral-900 rounded-2xl border border-purple-500/50 overflow-hidden shadow-[0_0_15px_rgba(168,85,247,0.15)] flex flex-col">
-                <div className="absolute top-3 right-3 bg-purple-600 text-white text-[10px] font-bold px-2 py-1 rounded shadow-lg z-20">
+                <div key={item.id} className="snap-center shrink-0 w-[85vw] sm:w-80 relative bg-neutral-900 dark:bg-light-surface rounded-2xl border border-purple-500/50 dark:border-purple-400/30 overflow-hidden shadow-[0_0_15px_rgba(168,85,247,0.15)] dark:shadow-none flex flex-col">
+                <div className="absolute top-3 right-3 bg-purple-600 dark:bg-purple-700 text-white text-[10px] font-bold px-2 py-1 rounded shadow-lg z-20">
                     LIMITED
                 </div>
                 <div className="h-40 relative">
@@ -74,22 +69,22 @@ const Catalog = ({ onNavigate, setSelectedTheme }) => {
                     ) : (
                         <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-transparent to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 dark:from-light-bg via-transparent to-transparent"></div>
                 </div>
                 <div className="p-4 flex flex-col flex-1">
-                    <div className="text-[10px] font-bold text-purple-400 mb-1">{item.theme}</div>
-                    <h3 className="text-lg font-bold text-white mb-1 leading-tight">{item.title}</h3>
-                    <p className="text-[10px] text-neutral-400 mb-3 line-clamp-2 leading-relaxed">{item.desc}</p>
+                    <div className="text-[10px] font-bold text-purple-400 dark:text-purple-600 mb-1">{item.theme}</div>
+                    <h3 className="text-lg font-bold text-white dark:text-light-text mb-1 leading-tight">{item.title}</h3>
+                    <p className="text-[10px] text-neutral-400 dark:text-neutral-600 mb-3 line-clamp-2 leading-relaxed">{item.desc}</p>
                     <div className="flex flex-wrap gap-1.5 mb-4 mt-auto">
-                        {item.features.slice(0, 2).map((f, idx) => (
-                        <span key={idx} className="px-1.5 py-0.5 bg-neutral-800 text-[9px] text-neutral-300 rounded border border-neutral-700">{f}</span>
+                        {item.features && item.features.slice(0, 2).map((f, idx) => (
+                        <span key={idx} className="px-1.5 py-0.5 bg-neutral-800 dark:bg-light-border text-[9px] text-neutral-300 dark:text-neutral-700 rounded border border-neutral-700 dark:border-neutral-300">{f}</span>
                         ))}
                     </div>
                     <div className="flex items-center justify-between gap-2">
-                        <span className="font-bold text-white text-sm">{item.price}</span>
+                        <span className="font-bold text-white dark:text-light-text text-sm">{item.price}</span>
                         <button 
                         onClick={() => handleBuySpecial(item)} 
-                        className="bg-purple-600 hover:bg-purple-500 text-white text-[10px] font-bold py-2 px-4 rounded-lg shadow-lg shadow-purple-900/20"
+                        className="bg-purple-600 dark:bg-purple-700 hover:bg-purple-500 dark:hover:bg-purple-600 text-white text-[10px] font-bold py-2 px-4 rounded-lg shadow-lg shadow-purple-900/20"
                         >
                         Ambil ini
                         </button>
@@ -101,116 +96,108 @@ const Catalog = ({ onNavigate, setSelectedTheme }) => {
         </div>
       )}
 
-      {/* --- SECTION 2: STANDARD COLLECTION (BUG FIX & ALIGNMENT UPDATE) --- */}
+      {/* --- SECTION 2: STANDARD COLLECTION (PREMIUM REFRESH) --- */}
       <div>
         <div className="flex items-center justify-between mb-4 px-1">
-          <h3 className="text-sm font-bold text-white flex items-center gap-2">
+          <h3 className="text-sm font-bold text-white dark:text-light-text flex items-center gap-2">
             <Layout size={18} className="text-indigo-400" />
             Standard Collection
           </h3>
         </div>
         
         {/* Category Tabs */}
-        <div className="flex overflow-x-auto gap-2 mb-6 scrollbar-hide pb-2">
+        <div className="flex overflow-x-auto gap-2 mb-6 scrollbar-hide pb-2 px-1">
           {categories.map((cat) => (
             <button
               key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-1.5 rounded-full text-[10px] font-bold whitespace-nowrap transition-all border
+              onClick={() => {
+                setActiveCategory(cat);
+                setActiveCardId(null); 
+              }}
+              className={`px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all border
                 ${activeCategory === cat 
-                  ? 'bg-white text-black border-white' 
-                  : 'bg-neutral-900 text-neutral-400 border-neutral-800 hover:border-neutral-600'}
-              `}
+                  ? 'bg-white dark:bg-light-text text-black dark:text-neutral-950 border-white dark:border-light-text shadow-lg shadow-white/10 scale-105' 
+                  : 'bg-neutral-900/50 dark:bg-light-surface text-neutral-500 dark:text-neutral-600 border-neutral-800 dark:border-light-border hover:border-neutral-600 dark:hover:border-neutral-400'}`}
             >
               {cat}
             </button>
           ))}
         </div>
 
-        {/* MASONRY GRID */}
-        <div className="columns-2 gap-4 space-y-4 px-1">
-          {filteredStandard.map((item) => (
-            <div key={item.id} className="break-inside-avoid">
-              
-              <div className="rounded-xl border border-neutral-800 bg-neutral-900 overflow-hidden shadow-sm transition-all hover:border-neutral-600">
+        {/* THE SNAP SLIDER CONTAINER */}
+        <div className="relative -mx-6">
+          <div className="flex overflow-x-auto gap-4 px-6 pb-4 snap-x snap-mandatory scrollbar-hide">
+            {filteredStandard.length > 0 ? (
+              filteredStandard.map((item) => {
+                const styleClass = categoryStyles[item.category] || categoryStyles.default;
                 
-                {/* INTERACTIVE IMAGE AREA */}
-                <div 
-                    className="relative group cursor-pointer"
-                    onClick={() => toggleOverlay(item.id)}
-                >
-                    {/* Gambar */}
-                    {item.image ? (
+                return (
+                  <div key={item.id} className="snap-center shrink-0 w-[85vw] sm:w-[400px]">
+                    <div className="rounded-3xl border border-neutral-700 dark:border-light-border bg-gradient-to-br from-neutral-900/60 dark:from-light-surface to-neutral-950/80 dark:to-light-surface overflow-hidden shadow-xl dark:shadow-none flex flex-col group backdrop-blur-sm transition-all hover:border-indigo-500/60 dark:hover:border-indigo-400 hover:shadow-2xl hover:shadow-indigo-500/10">
+                      
+                      {/* IMAGE AREA (Focus 4:5 Aspect) */}
+                      <div className="relative aspect-[4/5] overflow-hidden cursor-pointer" onClick={() => toggleOverlay(item.id)}>
+                        {/* Legend Label */}
+                        <div className={`absolute top-4 right-4 z-20 px-3 py-1.5 rounded-full border text-xs font-black backdrop-blur-xl shadow-lg uppercase ${styleClass}`}>
+                          <span className="opacity-80">✦</span> {item.category}
+                        </div>
+
                         <img 
                           src={item.image} 
                           alt={item.title} 
-                          className="w-full h-auto object-cover block" 
+                          loading="lazy"
+                          className="w-full h-full object-cover transition-transform duration-700" 
                         />
-                    ) : (
-                        <div className={`w-full h-32 bg-gradient-to-br ${item.color}`}></div>
-                    )}
-
-                    {/* OVERLAY (PERBAIKAN BUG & ALIGNMENT) */}
-                    <div 
-                        className={`absolute inset-0 bg-neutral-950/90 flex flex-col justify-center p-5 transition-all duration-300
-                        ${activeCardId === item.id 
-                            ? 'opacity-100 pointer-events-auto' // Mobile Active: Kelihatan & BISA DIKLIK
-                            : 'opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto'} // Default: Invisible & HANTU (Gak bisa diklik)
-                        `}
-                    >
-                        {/* Wrapper Konten (Items Start = Rata Kiri) */}
-                        <div className="flex flex-col items-start w-full">
-                            <span className="text-[9px] font-bold text-indigo-400 uppercase tracking-widest mb-1.5 text-left">
-                              {item.category}
-                            </span>
-                            
-                            <h3 className="font-bold text-white text-sm mb-3 text-left w-full">
-                              {item.title}
-                            </h3>
-                            
-                            {/* Text Justify (Rata Kanan Kiri) */}
-                            <p className="text-[10px] text-neutral-300 mb-5 leading-relaxed text-justify w-full line-clamp-6">
-                              {item.desc}
-                            </p>
-                            
-                            {/* Tombol Full Width */}
-                            <button 
-                              onClick={(e) => {
-                                e.stopPropagation(); // Mencegah toggle gambar ketutup
-                                handleSelectStandard(item);
-                              }}
-                              className="w-full py-2 bg-indigo-600 text-white text-[10px] font-bold rounded-lg shadow-lg hover:bg-indigo-500 transition-colors"
-                            >
-                              Pilih Desain
-                            </button>
+                        
+                        {/* INTERACTIVE OVERLAY */}
+                        <div className={`absolute inset-0 bg-gradient-to-t from-neutral-950 dark:from-light-bg via-neutral-950/70 dark:via-light-surface/70 to-transparent flex flex-col justify-end p-6 transition-all duration-500
+                          ${activeCardId === item.id ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0'}`}
+                        >
+                          <h4 className="text-white dark:text-light-text font-black text-xl mb-2 tracking-tight uppercase">{item.title}</h4>
+                          <p className="text-neutral-300 dark:text-neutral-700 text-sm leading-relaxed line-clamp-4 mb-6 font-medium opacity-90">
+                            "{item.desc}"
+                          </p>
+                          <button 
+                            onClick={(e) => { e.stopPropagation(); handleSelectStandard(item); }}
+                            className="w-full py-3.5 bg-gradient-to-r from-indigo-600 to-indigo-500 dark:from-indigo-600 dark:to-indigo-700 text-white dark:text-white text-xs font-black rounded-xl hover:from-indigo-500 hover:to-indigo-400 dark:hover:from-indigo-500 dark:hover:to-indigo-600 transition-all active:scale-95 shadow-lg shadow-indigo-900/40 uppercase tracking-widest"
+                          >
+                            Pilih Desain
+                          </button>
                         </div>
+                      </div>
+
+                      {/* PREVIEW BAR */}
+                      <div className="p-4 bg-neutral-950/60 dark:bg-light-surface border-t border-neutral-800 dark:border-light-border flex justify-center items-center">
+                        <a 
+                          href={item.demoLink}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="flex items-center gap-2 text-xs font-bold text-neutral-400 dark:text-neutral-600 hover:text-white dark:hover:text-neutral-800 transition-colors tracking-widest uppercase"
+                        >
+                          <Monitor size={16} className="text-indigo-400" /> Preview Live
+                        </a>
+                      </div>
                     </div>
-                </div>
-
-                {/* PREVIEW BAR */}
-                <div className="bg-neutral-950 py-2.5 px-3 border-t border-neutral-800 flex justify-center">
-                    <a 
-                      href={item.demoLink}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 text-[9px] font-semibold text-neutral-500 hover:text-indigo-400 transition-colors uppercase tracking-wide"
-                    >
-                      <Monitor size={10} /> Preview Live
-                    </a>
-                </div>
-
+                  </div>
+                );
+              })
+            ) : (
+              /* Empty State */
+              <div className="w-[85vw] text-center py-20 bg-neutral-900/20 dark:bg-light-surface rounded-3xl border border-dashed border-neutral-800 dark:border-light-border mx-auto">
+                <p className="text-xs text-neutral-500 dark:text-neutral-600 font-bold uppercase tracking-[0.2em]">Desain belum tersedia</p>
               </div>
-            </div>
-          ))}
-        </div>
-        
-        {/* Empty State */}
-        {filteredStandard.length === 0 && filteredSpecial.length === 0 && (
-          <div className="text-center py-12 bg-neutral-900/30 rounded-xl border border-dashed border-neutral-800">
-            <p className="text-xs text-neutral-500">Belum ada desain di kategori ini.</p>
+            )}
           </div>
-        )}
 
+          {/* SCROLL HINT */}
+          {filteredStandard.length > 0 && (
+            <div className="mt-6 text-center">
+              <p className="text-xs text-neutral-500 dark:text-neutral-600 font-medium tracking-wider uppercase">
+                ← Geser ke samping untuk lihat desain lainnya →
+              </p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

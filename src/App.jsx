@@ -5,6 +5,8 @@ import Home from './pages/Home';
 import Catalog from './pages/Catalog';
 import Pricing from './pages/Pricing';
 import Profile from './pages/Profile';
+import { ThemeProvider } from './contexts/ThemeContext';
+import { LanguageProvider } from './contexts/LanguageContext';
 
 const App = () => {
   const [activeTab, setActiveTab] = useState('home');
@@ -34,20 +36,24 @@ const App = () => {
   };
 
   return (
-    <div className={`min-h-screen bg-neutral-950 text-neutral-100 font-sans pb-24 selection:bg-indigo-500 selection:text-white transition-opacity duration-700`}>
-      
-      {/* Header Top Fixed */}
-      <Navbar />
+    <ThemeProvider>
+      <LanguageProvider>
+        <div className={`min-h-screen bg-neutral-950 dark:bg-light-bg text-neutral-100 dark:text-light-text font-sans pb-24 selection:bg-indigo-500 selection:text-white transition-colors duration-500`}>
+          
+          {/* Header Top Fixed */}
+          <Navbar />
 
-      {/* Main Content Area */}
-      <main className="max-w-md mx-auto pt-20 px-6 animate-fade-in">
-        {renderContent()}
-      </main>
+          {/* Main Content Area */}
+          <main className="max-w-md mx-auto pt-20 px-6 animate-fade-in">
+            {renderContent()}
+          </main>
 
-      {/* Navigation Bottom Fixed */}
-      <BottomNav activeTab={activeTab} setActiveTab={setActiveTab} />
-      
-    </div>
+          {/* Navigation Bottom Fixed */}
+          <BottomNav activeTab={activeTab} setActiveTab={setActiveTab} />
+          
+        </div>
+      </LanguageProvider>
+    </ThemeProvider>
   );
 };
 

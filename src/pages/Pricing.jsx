@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CheckCircle, MessageCircle, X, Crown, ArrowRight, Sparkles, Minus, ChevronDown, ChevronUp } from 'lucide-react';
 import { pricingTiers, portfolioItems, USER_INFO } from '../data/data';
+import { useLanguage } from '../contexts/LanguageContext';
 
 // --- MIKI: DATA FOR COMPARISON TABLE ---
 // --- MIKI: DATA FOR COMPARISON TABLE ---
@@ -19,6 +20,7 @@ const comparisonData = [
 ];
 
 const Pricing = ({ selectedTheme }) => {
+  const { t } = useLanguage();
   const [showModal, setShowModal] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [localTheme, setLocalTheme] = useState(null);
@@ -72,13 +74,13 @@ const Pricing = ({ selectedTheme }) => {
       
       {/* Header Section */}
        <div>
-         <h2 className="text-2xl font-bold text-white">
+         <h2 className="text-2xl font-bold text-white dark:text-light-text">
           Investasi{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-cyan-300">
             Terbaik
           </span>
         </h2>
-          <p className="text-neutral-400 text-xs">Pilih paket sesuai kebutuhanmu sekarang.</p>
+          <p className="text-neutral-400 dark:text-neutral-600 text-xs">Pilih paket sesuai kebutuhanmu sekarang.</p>
         </div>
       
       {/* Pricing Cards */}
@@ -86,53 +88,53 @@ const Pricing = ({ selectedTheme }) => {
         {pricingTiers.map((tier) => (
           <div 
             key={tier.id} 
-            className={`relative bg-neutral-900 p-6 rounded-2xl border transition-all duration-300 hover:shadow-xl
+            className={`relative bg-neutral-900 dark:bg-light-surface p-6 rounded-2xl border transition-all duration-300 hover:shadow-xl
               ${tier.borderColor} 
-              ${tier.highlight ? 'bg-gradient-to-b from-neutral-800 to-neutral-900 shadow-lg shadow-indigo-500/10 scale-[1.02]' : ''}
-              ${tier.isSpecial ? 'bg-gradient-to-br from-neutral-900 to-amber-950/30 border-amber-500/50 shadow-lg shadow-amber-500/10' : ''}
+              ${tier.highlight ? 'bg-gradient-to-b from-neutral-800 to-neutral-900 dark:from-light-surface dark:to-light-bg shadow-lg shadow-indigo-500/10 scale-[1.02]' : 'dark:border-light-border'}
+              ${tier.isSpecial ? 'bg-gradient-to-br from-neutral-900 to-amber-950/30 dark:from-light-surface dark:to-light-bg border-amber-500/50 dark:border-amber-400/30 shadow-lg shadow-amber-500/10' : ''}
             `}
           >
             {/* Badges */}
             {tier.highlight && (
-              <div className="absolute -top-3 right-4 bg-gradient-to-r from-indigo-600 to-indigo-500 text-white text-[10px] font-bold px-4 py-1.5 rounded-full shadow-lg flex items-center gap-1">
+              <div className="absolute -top-3 right-4 bg-gradient-to-r from-indigo-600 to-indigo-500 dark:from-indigo-700 dark:to-indigo-600 text-white text-[10px] font-bold px-4 py-1.5 rounded-full shadow-lg flex items-center gap-1">
                 <Sparkles size={10} /> POPULAR
               </div>
             )}
             {tier.isSpecial && (
-              <div className="absolute -top-3 right-4 bg-gradient-to-r from-amber-600 to-amber-500 text-white text-[10px] font-bold px-4 py-1.5 rounded-full shadow-lg flex items-center gap-1">
+              <div className="absolute -top-3 right-4 bg-gradient-to-r from-amber-600 to-amber-500 dark:from-amber-700 dark:to-amber-600 text-white text-[10px] font-bold px-4 py-1.5 rounded-full shadow-lg flex items-center gap-1">
                 <Crown size={10} /> SULTAN ONLY
               </div>
             )}
             
             <div className="flex items-start justify-between mb-4">
               <div>
-                <h3 className={`text-xl font-bold ${tier.isSpecial ? 'text-amber-400' : 'text-white'}`}>
+                <h3 className={`text-xl font-bold ${tier.isSpecial ? 'text-amber-400 dark:text-amber-600' : 'text-white dark:text-light-text'}`}>
                   {tier.name}
                 </h3>
-                <div className={`text-2xl font-bold mt-1 ${tier.isSpecial ? 'text-amber-300' : 'text-white'}`}>
+                <div className={`text-2xl font-bold mt-1 ${tier.isSpecial ? 'text-amber-300 dark:text-amber-600' : 'text-white dark:text-light-text'}`}>
                   {tier.price}
                 </div>
                 {tier.bestFor && (
-                  <div className="mt-3 inline-block bg-neutral-800/80 px-3 py-1.5 rounded-lg text-[11px] text-neutral-400 font-medium border border-neutral-700/50">
-                    Cocok buat: <span className={tier.isSpecial ? "text-amber-200 font-semibold" : "text-white font-semibold"}>{tier.bestFor}</span>
+                  <div className="mt-3 inline-block bg-neutral-800/80 dark:bg-light-border px-3 py-1.5 rounded-lg text-[11px] text-neutral-400 dark:text-neutral-700 font-medium border border-neutral-700/50 dark:border-neutral-300">
+                    Cocok buat: <span className={tier.isSpecial ? "text-amber-200 dark:text-amber-700 font-semibold" : "text-white dark:text-light-text font-semibold"}>{tier.bestFor}</span>
                   </div>
                 )}
               </div>
-              <div className={`p-3 rounded-xl ${tier.isSpecial ? 'bg-amber-500/10 text-amber-400' : 'bg-neutral-800 text-indigo-400'}`}>
+              <div className={`p-3 rounded-xl ${tier.isSpecial ? 'bg-amber-500/10 dark:bg-amber-500/20 text-amber-400 dark:text-amber-600' : 'bg-neutral-800 dark:bg-light-border text-indigo-400 dark:text-indigo-600'}`}>
                 {tier.icon}
               </div>
             </div>
             
-            <p className="text-xs text-neutral-400 mb-5 italic border-l-2 border-neutral-700 pl-4 py-1">
+            <p className="text-xs text-neutral-400 dark:text-neutral-600 mb-5 italic border-l-2 border-neutral-700 dark:border-light-border pl-4 py-1">
               "{tier.desc}"
             </p>
 
             <ul className="space-y-3 mb-6">
               {tier.features.map((feat, i) => (
-                <li key={i} className="flex items-start gap-3 text-sm text-neutral-300">
+                <li key={i} className="flex items-start gap-3 text-sm text-neutral-300 dark:text-neutral-700">
                   <CheckCircle 
                     size={16} 
-                    className={`shrink-0 mt-0.5 ${tier.isSpecial ? 'text-amber-500' : tier.highlight ? 'text-indigo-500' : 'text-neutral-500'}`} 
+                    className={`shrink-0 mt-0.5 ${tier.isSpecial ? 'text-amber-500 dark:text-amber-600' : tier.highlight ? 'text-indigo-500 dark:text-indigo-600' : 'text-neutral-500 dark:text-neutral-600'}`} 
                   />
                   <span className="leading-snug">{feat}</span>
                 </li>
@@ -143,10 +145,10 @@ const Pricing = ({ selectedTheme }) => {
               onClick={() => handleOrderClick(tier)}
               className={`w-full font-bold py-3.5 rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2 group
                 ${tier.isSpecial 
-                  ? 'bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-white shadow-lg shadow-amber-600/30' 
+                  ? 'bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 dark:from-amber-700 dark:to-amber-600 dark:hover:from-amber-600 dark:hover:to-amber-700 text-white shadow-lg shadow-amber-600/30' 
                   : tier.highlight
-                  ? 'bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white shadow-lg shadow-indigo-600/30'
-                  : 'bg-neutral-800 hover:bg-neutral-700 text-white border border-neutral-700 hover:border-neutral-500'}
+                  ? 'bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 dark:from-indigo-700 dark:to-indigo-600 dark:hover:from-indigo-600 dark:hover:to-indigo-700 text-white shadow-lg shadow-indigo-600/30'
+                  : 'bg-neutral-800 dark:bg-light-border hover:bg-neutral-700 dark:hover:bg-light-surface text-white dark:text-light-text border border-neutral-700 dark:border-neutral-300 hover:border-neutral-500 dark:hover:border-neutral-400'}
               `}
             >
               {tier.isSpecial ? 'Konsultasi VIP' : `Pilih ${tier.name}`} 
@@ -160,19 +162,19 @@ const Pricing = ({ selectedTheme }) => {
       <div className="py-4">
         <button 
           onClick={() => setShowComparison(!showComparison)}
-          className="mx-auto flex items-center gap-2 text-sm text-neutral-400 hover:text-white transition-colors bg-neutral-900 px-4 py-2 rounded-full border border-neutral-800"
+          className="mx-auto flex items-center gap-2 text-sm text-neutral-400 dark:text-neutral-600 hover:text-white dark:hover:text-neutral-700 transition-colors bg-neutral-900 dark:bg-light-surface px-4 py-2 rounded-full border border-neutral-800 dark:border-light-border"
         >
           {showComparison ? "Sembunyikan Perbandingan" : "Lihat Perbandingan Lengkap"}
           {showComparison ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
         </button>
 
         {showComparison && (
-          <div className="mt-6 overflow-x-auto rounded-2xl border border-neutral-800 bg-neutral-900/50 animate-fade-in-up">
+          <div className="mt-6 overflow-x-auto rounded-2xl border border-neutral-800 dark:border-light-border bg-neutral-900/50 dark:bg-light-surface animate-fade-in-up">
              {/* Added min-w-[600px] to force scroll on small screens instead of squishing */}
              <table className="w-full text-left border-collapse min-w-[600px]">
                <thead>
-                 <tr className="border-b border-neutral-800 bg-neutral-900">
-                   <th className="p-4 text-xs font-bold text-neutral-500 uppercase tracking-wider sticky left-0 bg-neutral-900 z-10 w-1/4">
+                 <tr className="border-b border-neutral-800 dark:border-light-border bg-neutral-900 dark:bg-light-bg">
+                   <th className="p-4 text-xs font-bold text-neutral-500 dark:text-neutral-700 uppercase tracking-wider sticky left-0 bg-neutral-900 dark:bg-light-bg z-10 w-1/4">
                      Fitur
                    </th>
                    {pricingTiers.map((tier, index) => (
@@ -183,10 +185,10 @@ const Pricing = ({ selectedTheme }) => {
                    ))}
                  </tr>
                </thead>
-               <tbody className="divide-y divide-neutral-800">
+               <tbody className="divide-y divide-neutral-800 dark:divide-light-border">
                  {comparisonData.map((row, idx) => (
-                   <tr key={idx} className="hover:bg-neutral-800/30 transition-colors">
-                     <td className="p-4 text-xs font-medium text-neutral-300 sticky left-0 bg-neutral-900/95 z-10 border-r border-neutral-800/50 whitespace-nowrap">
+                   <tr key={idx} className="hover:bg-neutral-800/30 dark:hover:bg-light-border transition-colors">
+                     <td className="p-4 text-xs font-medium text-neutral-300 dark:text-neutral-700 sticky left-0 bg-neutral-900/95 dark:bg-light-bg z-10 border-r border-neutral-800/50 dark:border-light-border whitespace-nowrap">
                        {row.label}
                      </td>
                      {/* Added min-w to cells to prevent squishing */}
@@ -204,15 +206,21 @@ const Pricing = ({ selectedTheme }) => {
 
        {/* Elegant Divider */}
       <div className="flex items-center py-4">
-        <div className="h-px flex-1 bg-neutral-800"></div>
-            <span className="px-4 text-xs text-neutral-500 font-medium">ATAU</span>
-            <div className="h-px flex-1 bg-neutral-800"></div>
+        <div className="h-px flex-1 bg-neutral-800 dark:bg-light-border"></div>
+        <span className="px-4 text-xs text-neutral-500 dark:text-neutral-600 font-medium">{t('or')}</span>
+        <div className="h-px flex-1 bg-neutral-800 dark:bg-light-border"></div>
       </div>
       
        {/* Footer Link */}
-      <div className="bg-neutral-950 p-5 rounded-2xl border border-dashed border-neutral-700 hover:border-neutral-500 transition-colors">
-         <div className="flex justify-between items-start mb-3"><div><h3 className="text-base font-bold text-white">Beli Template Saja</h3><p className="text-xs text-neutral-400">Dapat Source Code, edit sendiri.</p></div><span className="text-[10px] font-bold bg-green-900/30 text-green-400 px-2 py-1 rounded border border-green-900">Hemat</span></div>
-          <a href="https://lynk.id/fasuya" target="_blank" rel="noreferrer" className="w-full block text-center text-neutral-300 hover:text-white text-sm font-medium py-2 rounded-lg transition-colors hover:bg-neutral-900">Beli via Lynk.id (Start 50rb) &rarr;</a>
+      <div className="bg-neutral-950 dark:bg-light-bg p-5 rounded-2xl border border-dashed border-neutral-700 dark:border-light-border hover:border-neutral-500 dark:hover:border-neutral-400 transition-colors">
+        <div className="flex justify-between items-start mb-3">
+          <div>
+            <h3 className="text-base font-bold text-white dark:text-light-text">{t('buyTemplate')}</h3>
+            <p className="text-xs text-neutral-400 dark:text-neutral-600">{t('templateDesc')}</p>
+          </div>
+          <span className="text-[10px] font-bold bg-green-900/30 dark:bg-green-900/40 text-green-400 dark:text-green-600 px-2 py-1 rounded border border-green-900 dark:border-green-800">{t('savePrice')}</span>
+        </div>
+        <a href="https://lynk.id/fasuya" target="_blank" rel="noreferrer" className="w-full block text-center text-neutral-300 dark:text-neutral-700 hover:text-white dark:hover:text-neutral-800 text-sm font-medium py-2 rounded-lg transition-colors hover:bg-neutral-900 dark:hover:bg-light-border">{t('buyViaLynk')}</a>
       </div>
 
       {/* Modal Popup (unchanged, but included for completeness) */}

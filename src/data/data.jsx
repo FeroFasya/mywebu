@@ -258,7 +258,7 @@ export const pricingTiers = [
       "Bebas Request Warna & Font", 
       "Galeri Portofolio (Pamer Karya)", 
       "Sambung ke IG & TikTok",
-      "Struktur Ramah Google (SEO Basic)"
+      "Animasi Hover & Scroll"
     ],
     highlight: true,
     borderColor: "border-yellow-500/50"
@@ -275,7 +275,8 @@ export const pricingTiers = [
       "Fitur Auto-Play Musik/Video",
       "Galeri Foto Besar (Max 15)",
       "Gratis Setup Hosting (Terima Beres)", // KEY POINT: They don't need to watch a tutorial
-      "Dapat Akun Gmail & Netlify Pribadi"   // KEY POINT: You give them the keys
+      "Dapat Akun Gmail & Netlify Pribadi", // KEY POINT: You give them the keys
+      "Animasi Lanjutan (Scroll, Hover, dll)"
     ],
     highlight: false,
     borderColor: "border-indigo-500"
@@ -288,11 +289,11 @@ export const pricingTiers = [
     bestFor: "UMKM / Brand / Perusahaan",
     icon: <Crown size={20} className="text-amber-400" />,
     features: [
-      "Gratis Domain .COM (1 Tahun)", 
+      "Gratis Domain .COM / .ID (1 Tahun)", 
       "Email Bisnis (admin@namausaha.com)", 
       "Desain Premium (Tanpa Template)", 
       "Terdaftar di Google Maps", 
-      "Garansi Maintenance 1 Bulan"
+      "Garansi Maintenance 1 Bulan"   
     ],
     highlight: false,
     borderColor: "border-amber-500/80",
@@ -318,3 +319,12 @@ export const faqs = [
     answer: "Setiap paket ada jatah revisi minor. Kalau revisi rombak layout total, ada biaya tambahan."
   }
 ];
+
+export const categoryStyles = {
+  'Personal Brand': 'bg-pink-500/20 text-pink-400 border-pink-500/50',
+  'Gaming / Creator': 'bg-emerald-500/20 text-emerald-400 border-emerald-500/50',
+  'F&B Business': 'bg-orange-500/20 text-orange-400 border-orange-500/50',
+  'Creative Portfolio': 'bg-purple-500/20 text-purple-400 border-purple-500/50',
+  'UMKM / Jasa': 'bg-blue-500/20 text-blue-400 border-blue-500/50',
+  'default': 'bg-neutral-500/20 text-neutral-400 border-neutral-500/50'
+};
