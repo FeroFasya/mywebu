@@ -44,7 +44,7 @@ const App = () => {
           <Navbar />
 
           {/* Main Content Area */}
-          <main className="max-w-md md:max-w-4xl lg:max-w-6xl mx-auto pt-20 px-6 animate-fade-in">
+          <main className="max-w-md md:max-w-4xl lg:max-w-7xl mx-auto pt-20 px-6 animate-fade-in">
             {renderContent()}
           </main>
 

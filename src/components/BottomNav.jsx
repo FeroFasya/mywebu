@@ -11,7 +11,7 @@ const BottomNav = ({ activeTab, setActiveTab }) => {
 
   return (
     <div className="fixed bottom-0 left-0 w-full z-50">
-      <div className="max-w-md md:max-w-4xl lg:max-w-6xl mx-auto">
+      <div className="max-w-md md:max-w-4xl lg:max-w-7xl mx-auto">
         <div className="bg-neutral-950/80 dark:bg-light-bg/80 backdrop-blur-lg border-t border-neutral-800 dark:border-light-border px-6 py-3 flex justify-between items-center relative transition-colors duration-500">
           
           {/* MIKI: Indikator Glow yang bergerak (Opsional tapi keren) */}
