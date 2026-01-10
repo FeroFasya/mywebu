@@ -13,7 +13,17 @@ const testimonials = [
     text: "Website-nya keren banget dah!",
     date: "Dec 2025",
     verified: true
-  }
+  },
+  {
+    id: 2,
+    name: "Mami & Papi",
+    role: "Orangtuaku",
+    rating: 5,
+    text: "Semangat Kuliah dan Kerjanya ya nak, kami selalu dukung kamu!",
+    date: "Jan 2026",
+    verified: false,
+    isstarred: false
+  },
 ];
 
 const Profile = () => {
@@ -142,11 +152,13 @@ const Profile = () => {
                 
                 {/* Header: Stars + Verified */}
                 <div className="flex items-center justify-between mb-4">
-                  <div className="flex gap-0.5">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} size={14} className="text-yellow-500 dark:text-yellow-600 fill-yellow-500 dark:fill-yellow-600" />
-                    ))}
-                  </div>
+                  {(testimonial.isstarred ?? true) && (
+                    <div className="flex gap-0.5">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star key={i} size={14} className="text-yellow-500 dark:text-yellow-600 fill-yellow-500 dark:fill-yellow-600" />
+                      ))}
+                    </div>
+                  )}
                   {testimonial.verified && (
                     <div className="flex items-center gap-1 bg-green-500/20 dark:bg-green-500/10 text-green-400 dark:text-green-600 px-2 py-1 rounded-full text-[9px] font-bold border border-green-500/30 dark:border-green-500/20">
                       <CheckCircle size={10} />

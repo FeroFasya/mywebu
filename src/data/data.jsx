@@ -13,13 +13,12 @@ export const USER_INFO = {
 export const portfolioItems = [
   {
     id: 1,
-    title: "Swiss Minimalist",
-    category: "Creative Portfolio",
-    image: "/images/swiss_minimal.png", // Jangan lupa SS web putih tadi!
-    color: "from-gray-200 to-gray-400", // Off-white elegan
-    desc: "Estetika 'Swiss Style' ultra-bersih dengan struktur Grid Lines halus. Cocok untuk desainer yang ingin karya mereka jadi pusat perhatian.",
-    demoLink: "https://swissfero.netlify.app/"
-    
+    title: "Lumina Coffee",
+    category: "Cafe / Resto",
+    image: "/images/lumina_coffee.png",
+    color: "from-neutral-100 to-neutral-300",
+    desc: "Website cafe minimalis dengan pendekatan editorial ala Jepang. Cocok untuk coffee shop yang ingin tampil dewasa, tenang, dan berkelas.",
+    demoLink: "https://luminafero.netlify.app/"
   },
   {
     id: 2,
@@ -32,15 +31,33 @@ export const portfolioItems = [
   },
   {
     id: 3,
+    title: "Obsidian Roast",
+    category: "Cafe / Resto",
+    image: "/images/obsidian.jpg", 
+    color: "from-zinc-900 to-stone-800", 
+    desc: "Premium long-form storytelling landing page. Mengusung estetika 'Dark Luxury' dengan alur narasi yang mendalam, cocok untuk brand kopi eksklusif.",
+    demoLink: "https://obsidianfero.netlify.app/" 
+  },
+  {
+    id: 4,
     title: "Paws & Whiskers",
-    category: "Pet Lovers / Business",
+    category: "Pet Lovers",
     image: "/images/paws.jpg", 
     color: "from-orange-400 to-teal-400", 
     desc: "Tema super gemoy dengan desain rounded dan animasi playful. Spesial buat Pet Shop & Grooming.",
     demoLink: "https://pawsfero.netlify.app/"
   },
   {
-    id: 4,
+    id: 5,
+    title: "Velvet & Ember",
+    category: "Cafe / Resto",
+    image: "/images/velvet.jpg", 
+    color: "from-stone-900 to-amber-900", 
+    desc: "Premium editorial landing page untuk restoran kelas atas. Menampilkan layout arsitektural yang elegan dengan fokus pada atmosfer dan storytelling kuliner.",
+    demoLink: "https://velvetfero.netlify.app/"
+  },
+  {
+    id: 6,
     title: "Kawaii Bento Grid", 
     category: "Creative Portfolio",
     image: "/images/bento.png", 
@@ -49,7 +66,7 @@ export const portfolioItems = [
     demoLink: "https://bentofero.netlify.app/" 
   },
   {
-    id: 5,
+    id: 7,
     title: "Elegant Business",
     category: "UMKM / Jasa",
     image: "/images/business.jpg", 
@@ -58,7 +75,16 @@ export const portfolioItems = [
     demoLink: "https://myelegantbusiness.netlify.app/"
   },
   {
-    id: 6,
+    id: 8,
+    title: "Apex Creator",
+    category: "Personal Brand",
+    image: "/images/gym.png",
+    color: "from-red-600 to-slate-900",
+    desc: "Desain agresif untuk Fitness Influencer. Fitur 'Split CTA' memisahkan tawaran Brand Deals & Klien Coaching, plus Grid Konten Video.",
+    demoLink: "https://apexfero.netlify.app/"
+  },
+  {
+    id: 9,
     title: "Coffee Talk",
     category: "Personal Brand",
     image: "/images/coffe.jpg", 
@@ -67,25 +93,34 @@ export const portfolioItems = [
     demoLink: "https://coffemyfero.netlify.app/"
   },
   {
-    id: 7,
+    id: 10,
     title: "The Bistro",
-    category: "F&B Business",
+    category: "Cafe / Resto",
     image: "/images/bistro.jpg", 
     color: "from-red-500 to-yellow-500", 
     desc: "Tema kuliner menggugah selera Dilengkapi tombol Direct Order (WA/GoFood) untuk konversi penjualan instan.",
     demoLink: "https://bistrofero.netlify.app/"
   },
   {
-    id: 8,
+    id: 11,
+    title: "Sage Roastery",
+    category: "Cafe / Resto",
+    image: "/images/sage.jpg", 
+    color: "from-emerald-800 to-stone-100", 
+    desc: "Desain editorial modern dengan palet warna natural yang menenangkan. Mengedepankan visual 'Slow Living' untuk arsip digital cafe yang estetik.",
+    demoLink: "https://sagefero.netlify.app/"
+  },
+  {
+    id: 12,
     title: "Midnight Violet",
-    category: "Tech / Luxury",
+    category: "Personal Brand",
     image: "/images/violet.jpg", 
     color: "from-purple-900 to-indigo-900", 
     desc: "Tema Glassmorphism mewah dengan nuansa Dark Neon. Cocok untuk Web3, Tech, atau Personal Brand futuristik.",
     demoLink: "https://violetfero.netlify.app/"
   },
   {
-    id: 9,
+    id: 13,
     title: "Cyber Gamer",
     category: "Gaming / Creator",
     image: "/images/gaming.jpg", 
@@ -94,7 +129,7 @@ export const portfolioItems = [
     demoLink: "https://mygamingfero.netlify.app/"
   },
   {
-    id: 10,
+    id: 14,
     title: "Pixel Art",
     category: "Creative Portfolio",
     image: "/images/pixel.jpg", 
@@ -103,7 +138,7 @@ export const portfolioItems = [
     demoLink: "https://pixelartfero.netlify.app/"
   },
   {
-    id: 11,
+    id: 15,
     title: "Streamer Hub",
     category: "Gaming / Creator",
     image: "/images/streamer.jpg", 
@@ -112,7 +147,7 @@ export const portfolioItems = [
     demoLink: "https://streamerfero.netlify.app/"
   },
   {
-    id: 12,
+    id: 16,
     title: "Glow Studio",
     category: "UMKM / Jasa",
     image: "/images/glow.jpg", 
@@ -121,7 +156,7 @@ export const portfolioItems = [
     demoLink: "https://glowfero.netlify.app/"
   },
   {
-    id: 13,
+    id: 17,
     title: "The Garage",
     category: "UMKM / Jasa",
     image: "/images/garage.jpg", 
@@ -130,7 +165,7 @@ export const portfolioItems = [
     demoLink: "https://garagefero.netlify.app/"
   },
   {
-    id: 14,
+    id: 18,
     title: "EduFocus",
     category: "Education / Course",
     image: "/images/edu.jpg", 
@@ -139,7 +174,7 @@ export const portfolioItems = [
     demoLink: "https://edufero.netlify.app/"
   },
   {
-    id: 15,
+    id: 19,
     title: "Travel Journal",
     category: "Hobby / Blog",
     image: "/images/travel.jpg", 
@@ -147,18 +182,8 @@ export const portfolioItems = [
     desc: "Tema blog travel dengan gaya editorial majalah. Fitur Parallax Hero dan layout cerita zig-zag yang estetik.",
     demoLink: "https://travelfero.netlify.app/"
   },
-  // --- NEW ADDITIONS ---
   {
-    id: 16,
-    title: "Apex Creator",
-    category: "Personal Brand",
-    image: "/images/gym.png", // Jangan lupa SS web gym tadi!
-    color: "from-red-600 to-slate-900", // Merah Crimson ke Hitam
-    desc: "Desain agresif untuk Fitness Influencer. Fitur 'Split CTA' memisahkan tawaran Brand Deals & Klien Coaching, plus Grid Konten Video.",
-    demoLink: "https://apexfero.netlify.app/"
-  },
-  {
-    id: 17,
+    id: 20,
     title: "The Minimalist",
     category: "Personal Brand",
     image: "/images/minimals.jpg", 
@@ -172,9 +197,19 @@ export const portfolioItems = [
 export const specialItems = [
   {
     id: 's1', 
+    title: "The Urban Resto",
+    theme: "Premium F&B Edition",
+    category: "Cafe / Resto",
+    price: "Rp300.000", 
+    image: "/images/urban.mp4", 
+    desc: "Landing page kuliner 'Next Level'. Dilengkapi fitur Filter Menu & Maps Dark Mode.",
+    features: ["Fitur Filter Makanan/Minuman", "Embed Google Maps", "Direct Link Gofood"]
+  },
+  {
+    id: 's2', 
     title: "The Noir / Brutalism",
     theme: "High-End Dark Edition",
-    category: "Creative Portfolio",
+    category: "Personal Brand",
     price: "Rp400.000", 
     image: "/images/noir.mp4", 
     desc: "Tema monokrom brutalist dengan efek Noise Grain & Hover Reveal. Khusus buat kreator yang ingin terlihat misterius, mahal, dan edgy.",
@@ -182,10 +217,10 @@ export const specialItems = [
   },
   // --- NEW SPECIAL ITEM (Rival The Noir) ---
   {
-    id: 's2', 
+    id: 's3', 
     title: "The White Luxury",
     theme: "High-End Editorial Edition",
-    category: "Creative Portfolio",
+    category: "Personal Brand",
     price: "Rp400.000", // Harganya sama kayak Noir, biar selevel
     image: "/images/luxury_white.mp4", // Rekam layar efek knockout-nya!
     desc: "Tema Editorial Mahal dengan teknik 'Partial Overlay' & 'Knockout Text'. Teks transparan yang membelah background statis menciptakan ilusi kedalaman.",
@@ -193,30 +228,10 @@ export const specialItems = [
   },
   // --- SHIFTED ITEMS ---
   {
-    id: 's3', 
-    title: "Domain Expansion: Void",
-    theme: "Special Anime Edition",
-    category: "Personal Brand",
-    price: "Rp350.000",
-    image: "/images/gojo_final.mp4", 
-    desc: "Tema Ungu Gelap dengan efek partikel 'Infinity'. Cocok buat wibu elit yang mau flexing.",
-    features: ["Animasi Infinity Scroll", "Cursor Custom", "Dark Mode Only"]
-  },
-  {
-    id: 's4', 
-    title: "The Urban Resto",
-    theme: "Premium F&B Edition",
-    category: "F&B Business",
-    price: "Rp300.000", 
-    image: "/images/urban.mp4", 
-    desc: "Landing page kuliner 'Next Level'. Dilengkapi fitur Filter Menu & Maps Dark Mode.",
-    features: ["Fitur Filter Makanan/Minuman", "Embed Google Maps", "Direct Link Gofood"]
-  },
-  {
     id: 's5',
     title: "Soft Archive / Memory Room",
     theme: "Dreamy Pastel Edition",
-    category: "Digital Gallery",
+    category: "Creative Portfolio",
     price: "Rp300.000",
     image: "/images/gallerydigital.mp4",
     desc: "Galeri online untuk menampilkan karya terpilih dengan tampilan bersih dan emosional.",
@@ -226,6 +241,16 @@ export const specialItems = [
       "Minimal Caption Overlay",
       "Ambient Hover Animation"
     ]
+  },
+  {
+    id: 's4', 
+    title: "Domain Expansion: Void",
+    theme: "Special Anime Edition",
+    category: "Creative Portfolio",
+    price: "Rp350.000",
+    image: "/images/gojo_final.mp4", 
+    desc: "Tema Ungu Gelap dengan efek partikel 'Infinity'. Cocok buat wibu elit yang mau flexing.",
+    features: ["Animasi Infinity Scroll", "Cursor Custom", "Dark Mode Only"]
   }
 ];
 
