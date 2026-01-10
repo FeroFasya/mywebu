@@ -1,13 +1,161 @@
-src/
-├── assets/           (Taruh gambar/video di sini)
-├── data/
-│   └── data.js       (Kita pindahkan semua text & array ke sini)
-├── components/
-│   ├── BottomNav.jsx (Menu Navigasi ala App)
-│   ├── Navbar.jsx    (Header Logo atas)
-├── pages/
-│   ├── Home.jsx
-│   ├── Catalog.jsx
-│   ├── Pricing.jsx
-│   └── Profile.jsx
-└── App.jsx           (Otak utamanya)
+📁 FERO LANDING PAGE - PROJECT STRUCTURE v2.0
+=============================================
+
+PROJECT ROOT: fero-landing-page/
+│
+├── 📄 Configuration Files
+│   ├── package.json                 → Dependencies & npm scripts
+│   ├── vite.config.js               → Vite bundler configuration
+│   ├── tailwind.config.js           → Tailwind CSS + Dark mode setup
+│   ├── postcss.config.js            → PostCSS plugins config
+│   ├── eslint.config.js             → Code linting rules
+│   ├── index.html                   → HTML entry point
+│   └── README.md                    → Project documentation
+│
+├── 📂 public/                       → Static files
+│   ├── google1021a1bcad42f84a.html  → Google verification
+│   └── images/                      → All images
+│       ├── banner2.png
+│       ├── mywebu.png
+│       ├── profil.jpg
+│       └── [portfolio images]
+│
+├── 📂 src/                          → Source Code (Main Development Folder)
+│   │
+│   ├── 📄 main.jsx                  → React entry point
+│   ├── 📄 App.jsx                   → Main App component + Theme/Language Providers
+│   ├── 📄 App.css                   → App-specific styles
+│   ├── 📄 index.css                 → Global styles & Tailwind
+│   │
+│   ├── 📂 components/               → Reusable UI Components
+│   │   ├── Navbar.jsx               → Header (Logo + Theme + Language + WA button)
+│   │   └── BottomNav.jsx            → Bottom navigation for mobile
+│   │
+│   ├── 📂 pages/                    → Full Page Components
+│   │   ├── Home.jsx                 → Hero section + Features + Process
+│   │   ├── Catalog.jsx              → Design gallery + Portfolio showcase
+│   │   ├── Pricing.jsx              → Pricing packages + Comparison table
+│   │   └── Profile.jsx              → Developer profile + Testimonials + FAQ
+│   │
+│   ├── 📂 contexts/                 → Global State Management (React Context)
+│   │   ├── ThemeContext.jsx         → Dark/Light mode toggle logic
+│   │   │                            → Default: Dark mode (isDark = true)
+│   │   └── LanguageContext.jsx      → Language switch (ID/EN) + All translations
+│   │
+│   ├── 📂 data/                     → Static Data & Configuration
+│   │   └── data.jsx                 → portfolioItems, pricingTiers, testimonials,
+│   │                                   faqs, USER_INFO
+│   │
+│   └── 📂 assets/                   → Additional assets (icons, fonts)
+│
+├── 📂 dist/                         → Production build output (generated)
+│
+├── 📂 node_modules/                 → npm dependencies
+│
+├── 📂 .git/                         → Git repository
+│
+├── 📄 .gitignore                    → Git ignore rules
+├── 📄 package-lock.json             → Dependency versions lock
+└── 📄 struktur.txt                  → This file
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🎯 MAIN FEATURES IMPLEMENTED
+=============================
+
+✅ DARK/LIGHT MODE
+   Location:    src/contexts/ThemeContext.jsx
+   Default:     Dark mode (isDark = true)
+   Toggle:      Navbar.jsx - Sun/Moon icon button
+   Storage:     localStorage ('theme-mode')
+   Colors:      Tailwind dark: prefix + custom light-bg, light-surface, etc.
+
+✅ LANGUAGE SWITCHING (Indonesian/English)
+   Location:    src/contexts/LanguageContext.jsx
+   Languages:   'id' (default) and 'en'
+   Toggle:      Navbar.jsx - ID/EN button
+   Storage:     localStorage ('language')
+   Coverage:    60+ translation keys (Home, Catalog, Pricing, Profile)
+
+✅ RESPONSIVE DESIGN
+   Framework:   Tailwind CSS (mobile-first)
+   Custom Dark Colors:
+   ├─ light-bg: #fafaf9
+   ├─ light-surface: #f5f5f4
+   ├─ light-border: #e7e5e4
+   └─ light-text: #292524
+
+✅ NAVIGATION STRUCTURE
+   Top:         Navbar (Header with controls)
+   Bottom:      BottomNav (Mobile page navigation)
+   Active Page: Tracked via state
+   Smooth:      CSS transitions & animations
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+⚙️ TECHNOLOGY STACK
+====================
+
+Frontend:       React 19.2.0
+Bundler:        Vite 7.2.4
+Styling:        Tailwind CSS 3.4.17
+Icons:          lucide-react
+State:          React Context API
+Icons:          lucide-react
+
+Commands:
+├─ npm run dev      → Dev server (localhost:5174)
+├─ npm run build    → Production build
+└─ npm run preview  → Preview production build
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📋 QUICK CUSTOMIZATION GUIDE
+============================
+
+1️⃣ CHANGE DEFAULT MODE (Dark/Light)
+   File:   src/contexts/ThemeContext.jsx
+   Line:   6 (in useState initialization)
+   Find:   return savedTheme ? savedTheme === 'dark' : true;
+   Action: Change 'true' → 'false' for light mode default
+
+2️⃣ ADD NEW TRANSLATIONS
+   File:   src/contexts/LanguageContext.jsx
+   Add:    New keys in translations.id and translations.en objects
+   Usage:  {t('yourNewKey')} in components
+
+3️⃣ UPDATE PORTFOLIO DATA
+   File:   src/data/data.jsx
+   Edit:   portfolioItems, specialItems, pricingTiers, testimonials, faqs, USER_INFO
+
+4️⃣ MODIFY COLORS
+   File:   tailwind.config.js
+   Edit:   colors object for light/dark themes
+
+5️⃣ UPDATE PAGE CONTENT
+   Files:  src/pages/[Home, Catalog, Pricing, Profile].jsx
+   Method: Use t('translationKey') for all text
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🔧 COMPONENT HIERARCHY
+======================
+
+App.jsx (Root)
+├── ThemeProvider
+│   └── LanguageProvider
+│       ├── Navbar
+│       ├── Home / Catalog / Pricing / Profile (Dynamic)
+│       └── BottomNav
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+Project Version:    1.0.0
+Last Updated:       January 2026
+Created by:         Feroga Radja Fasyahira
+Purpose:            Portfolio+ Fero for Productized Service with multi-language support

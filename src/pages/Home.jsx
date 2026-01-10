@@ -15,7 +15,7 @@ const Home = ({ onNavigate }) => {
         {/* 1. BACKGROUND IMAGE */}
         <div className="absolute inset-0 z-0">
            <img 
-             src="/images/banner2.png" 
+             src="/images/banner5.png" 
              alt="Hero Banner" 
              // MIKI: Object positioning diatur supaya bagian penting gambar tetap terlihat saat dipotong jadi wide
              className="w-full h-full object-cover object-center"

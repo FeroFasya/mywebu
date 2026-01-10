@@ -9,7 +9,7 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 w-full z-40 bg-neutral-950/80 dark:bg-light-bg/80 backdrop-blur-md border-b border-neutral-800 dark:border-light-border transition-colors duration-500">
-      <div className="max-w-md mx-auto px-6 py-4 flex justify-between items-center">
+      <div className="max-w-md md:max-w-4xl lg:max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
         
         {/* Logo Text/Image */}
         <div className="flex items-center gap-2">

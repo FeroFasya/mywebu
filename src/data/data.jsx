@@ -13,30 +13,31 @@ export const USER_INFO = {
 export const portfolioItems = [
   {
     id: 1,
-    title: "The Minimalist",
-    category: "Personal Brand",
-    image: "/images/minimals.jpg", 
-    color: "from-purple-500 to-indigo-600", 
-    desc: "Desain bersih untuk konten kamu yang ingin fokus pada portofolio.",
-    demoLink: "https://client-fero.netlify.app"
+    title: "Swiss Minimalist",
+    category: "Creative Portfolio",
+    image: "/images/swiss_minimal.png", // Jangan lupa SS web putih tadi!
+    color: "from-gray-200 to-gray-400", // Off-white elegan
+    desc: "Estetika 'Swiss Style' ultra-bersih dengan struktur Grid Lines halus. Cocok untuk desainer yang ingin karya mereka jadi pusat perhatian.",
+    demoLink: "https://swissfero.netlify.app/"
+    
   },
   {
     id: 2,
-    title: "Cyber Gamer",
-    category: "Gaming / Creator",
-    image: "/images/gaming.jpg", 
-    color: "from-emerald-400 to-cyan-600",
-    desc: "Tema futuristik neon untuk streamer dan gamer profesional.",
-    demoLink: "https://mygamingfero.netlify.app/"
-  },
-  {
-    id: 3,
     title: "Soft Girl / Coquette",
     category: "Personal Brand",
     image: "/images/softgirl.png", 
     color: "from-pink-400 to-yellow-400", 
     desc: "Desain manis dengan palet warna pastel yang lembut.",
     demoLink: "https://softgirlfero.netlify.app/"
+  },
+  {
+    id: 3,
+    title: "Paws & Whiskers",
+    category: "Pet Lovers / Business",
+    image: "/images/paws.jpg", 
+    color: "from-orange-400 to-teal-400", 
+    desc: "Tema super gemoy dengan desain rounded dan animasi playful. Spesial buat Pet Shop & Grooming.",
+    demoLink: "https://pawsfero.netlify.app/"
   },
   {
     id: 4,
@@ -67,24 +68,15 @@ export const portfolioItems = [
   },
   {
     id: 7,
-    title: "Pixel Art",
-    category: "Creative Portfolio",
-    image: "/images/pixel.jpg", 
-    color: "from-pink-500 to-purple-600",
-    desc: "Tema retro pixel art untuk seniman digital dan ilustrator.",
-    demoLink: "https://pixelartfero.netlify.app/"
+    title: "The Bistro",
+    category: "F&B Business",
+    image: "/images/bistro.jpg", 
+    color: "from-red-500 to-yellow-500", 
+    desc: "Tema kuliner menggugah selera Dilengkapi tombol Direct Order (WA/GoFood) untuk konversi penjualan instan.",
+    demoLink: "https://bistrofero.netlify.app/"
   },
   {
     id: 8,
-    title: "Paws & Whiskers",
-    category: "Pet Lovers / Business",
-    image: "/images/paws.jpg", 
-    color: "from-orange-400 to-teal-400", 
-    desc: "Tema super gemoy dengan desain rounded dan animasi playful. Spesial buat Pet Shop & Grooming.",
-    demoLink: "https://pawsfero.netlify.app/"
-  },
-  {
-    id: 9,
     title: "Midnight Violet",
     category: "Tech / Luxury",
     image: "/images/violet.jpg", 
@@ -93,13 +85,22 @@ export const portfolioItems = [
     demoLink: "https://violetfero.netlify.app/"
   },
   {
+    id: 9,
+    title: "Cyber Gamer",
+    category: "Gaming / Creator",
+    image: "/images/gaming.jpg", 
+    color: "from-emerald-400 to-cyan-600",
+    desc: "Tema futuristik neon untuk streamer dan gamer profesional.",
+    demoLink: "https://mygamingfero.netlify.app/"
+  },
+  {
     id: 10,
-    title: "The Bistro",
-    category: "F&B Business",
-    image: "/images/bistro.jpg", 
-    color: "from-red-500 to-yellow-500", 
-    desc: "Tema kuliner menggugah selera Dilengkapi tombol Direct Order (WA/GoFood) untuk konversi penjualan instan.",
-    demoLink: "https://bistrofero.netlify.app/"
+    title: "Pixel Art",
+    category: "Creative Portfolio",
+    image: "/images/pixel.jpg", 
+    color: "from-pink-500 to-purple-600",
+    desc: "Tema retro pixel art untuk seniman digital dan ilustrator.",
+    demoLink: "https://pixelartfero.netlify.app/"
   },
   {
     id: 11,
@@ -158,12 +159,12 @@ export const portfolioItems = [
   },
   {
     id: 17,
-    title: "Swiss Minimalist",
-    category: "Creative Portfolio",
-    image: "/images/swiss_minimal.png", // Jangan lupa SS web putih tadi!
-    color: "from-gray-200 to-gray-400", // Off-white elegan
-    desc: "Estetika 'Swiss Style' ultra-bersih dengan struktur Grid Lines halus. Cocok untuk desainer yang ingin karya mereka jadi pusat perhatian.",
-    demoLink: "https://swissfero.netlify.app/"
+    title: "The Minimalist",
+    category: "Personal Brand",
+    image: "/images/minimals.jpg", 
+    color: "from-purple-500 to-indigo-600", 
+    desc: "Desain bersih untuk konten kamu yang ingin fokus pada portofolio.",
+    demoLink: "https://client-fero.netlify.app"
   }
 ];
 

@@ -174,7 +174,7 @@ const Catalog = ({ onNavigate, setSelectedTheme }) => {
                           rel="noreferrer"
                           className="flex items-center gap-2 text-xs font-bold text-neutral-400 dark:text-neutral-600 hover:text-white dark:hover:text-neutral-800 transition-colors tracking-widest uppercase"
                         >
-                          <Monitor size={16} className="text-indigo-400" /> Preview Live
+                          <Monitor size={16} className="text-indigo-400" /> Buka Website
                         </a>
                       </div>
                     </div>
