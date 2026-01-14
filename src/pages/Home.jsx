@@ -10,7 +10,7 @@ const Home = ({ onNavigate }) => {
       
       {/* --- HERO SECTION: RECTANGULAR LUXURY BANNER --- */}
       {/* MIKI: Tinggi diubah jadi h-[420px] biar lebih 'wide'. Flex items-end untuk posisi bawah. */}
-      <section className="relative w-[calc(100%+3rem)] -mx-6 -mt-8 h-[420px] overflow-hidden flex items-end animate-fade-in">
+      <section className="relative w-[calc(100%+3rem)] -mx-6 -mt-8 h-[420px] overflow-hidden flex items-end animate-fade-in shadow-2xl shadow-black/40">
         
         {/* 1. BACKGROUND IMAGE */}
         <div className="absolute inset-0 z-0">
@@ -22,8 +22,8 @@ const Home = ({ onNavigate }) => {
            />
         </div>
 
-        {/* 2. GRADIENT OVERLAY (Lebih gelap di kiri bawah untuk teks) */}
-        <div className="absolute inset-0 z-10 bg-gradient-to-t from-neutral-950 via-neutral-950/70 to-transparent"></div>
+        {/* 2. GRADIENT OVERLAY (Lebih gelap di kiri bawah untuk teks) - Diubah ke ASH gradient */}
+        <div className="absolute inset-0 z-10 bg-gradient-to-t from-ash via-ash/70 to-transparent"></div>
 
         {/* 3. TEXT CONTENT (RATA KIRI & MINIMALIS) */}
         {/* MIKI: Padding diperbesar (px-8 pb-10) biar lega. Text-left. */}
@@ -43,7 +43,7 @@ const Home = ({ onNavigate }) => {
             </h1>
             
             {/* MIKI: Max-width diatur biar teks ga kebablasan ke kanan. Rata kiri. */}
-            <p className="text-neutral-300 text-sm mb-8 leading-relaxed max-w-[280px] drop-shadow-md">
+            <p className="text-gray-300 text-sm mb-8 leading-relaxed max-w-[280px] drop-shadow-md">
                 {t('heroDesc')}
             </p>
             
@@ -51,7 +51,7 @@ const Home = ({ onNavigate }) => {
             <div className="flex flex-row gap-3">
                 <button 
                     onClick={() => onNavigate('catalog')}
-                    className="bg-white text-neutral-950 text-sm font-bold py-3 px-5 rounded-xl hover:bg-neutral-200 transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.15)]"
+                    className="bg-white text-ash-darker text-sm font-bold py-3 px-5 rounded-xl hover:bg-neutral-200 transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.15)]"
                 >
                     {t('seeExamples')} <ArrowRight size={16} />
                 </button>
@@ -67,13 +67,13 @@ const Home = ({ onNavigate }) => {
 
       {/* --- EDUKASI: WEB VS PDF --- */}
       <section className="px-2">
-        <div className="bg-neutral-900 dark:bg-light-surface rounded-3xl border border-neutral-800 dark:border-light-border p-6 relative overflow-hidden group hover:border-neutral-700 dark:hover:border-neutral-300 transition-colors shadow-xl dark:shadow-none">
+        <div className="bg-ash-surface dark:bg-light-surface rounded-3xl border border-ash-darker dark:border-light-border p-6 relative overflow-hidden group hover:border-neutral-600 dark:hover:border-neutral-300 transition-colors shadow-lg shadow-black/10">
             
-            <div className="absolute top-0 right-0 p-6 opacity-5 dark:opacity-10 group-hover:opacity-10 dark:group-hover:opacity-20 transition-opacity text-neutral-800 dark:text-neutral-200">
+            <div className="absolute top-0 right-0 p-6 opacity-5 dark:opacity-10 group-hover:opacity-10 dark:group-hover:opacity-20 transition-opacity text-white dark:text-neutral-200">
                 <Monitor size={120} />
             </div>
             
-            <h2 className="text-lg font-bold mb-6 flex items-center gap-2 relative z-10 text-neutral-100 dark:text-light-text">
+            <h2 className="text-lg font-bold mb-6 flex items-center gap-2 relative z-10 text-ash-text dark:text-light-text">
                 <Zap size={20} className="text-yellow-400 fill-yellow-400" />
                 {t('whyWebsite')}
             </h2>
@@ -82,20 +82,20 @@ const Home = ({ onNavigate }) => {
                 <div className="flex gap-4 items-start">
                     <div className="mt-1 bg-red-500/10 dark:bg-red-500/20 p-2 rounded-lg text-red-400 dark:text-red-500 shrink-0"><FileX size={20} /></div>
                     <div>
-                        <h3 className="font-bold text-sm text-neutral-200 dark:text-light-text mb-1">{t('pdfProblem')}</h3>
-                        <p className="text-xs text-neutral-500 dark:text-neutral-600 leading-relaxed">
+                        <h3 className="font-bold text-sm text-gray-200 dark:text-light-text mb-1">{t('pdfProblem')}</h3>
+                        <p className="text-xs text-gray-400 dark:text-neutral-600 leading-relaxed">
                             {t('pdfDesc')}
                         </p>
                     </div>
                 </div>
                 
-                <div className="w-full h-px bg-neutral-800 dark:bg-light-border"></div>
+                <div className="w-full h-px bg-ash-darker dark:bg-light-border"></div>
 
                 <div className="flex gap-4 items-start">
                     <div className="mt-1 bg-green-500/10 dark:bg-green-500/20 p-2 rounded-lg text-green-400 dark:text-green-600 shrink-0"><Globe size={20} /></div>
                     <div>
-                        <h3 className="font-bold text-sm text-neutral-200 dark:text-light-text mb-1">{t('websiteSolution')}</h3>
-                        <p className="text-xs text-neutral-500 dark:text-neutral-600 leading-relaxed">
+                        <h3 className="font-bold text-sm text-gray-200 dark:text-light-text mb-1">{t('websiteSolution')}</h3>
+                        <p className="text-xs text-gray-400 dark:text-neutral-600 leading-relaxed">
                             {t('websiteDesc')}
                         </p>
                     </div>
@@ -106,54 +106,55 @@ const Home = ({ onNavigate }) => {
 
       {/* --- MANFAAT UMUM --- */}
       <section>
-        <h2 className="text-lg font-bold mb-6 flex items-center gap-2 px-2 text-neutral-100 dark:text-light-text">
+        <h2 className="text-lg font-bold mb-6 flex items-center gap-2 px-2 text-ash-text dark:text-light-text">
           <Sparkles size={20} className="text-purple-400" />
           {t('whatFor')}
         </h2>
         <div className="grid gap-4 sm:grid-cols-2">
           {/* Card 1 */}
-          <div className="bg-neutral-900/50 dark:bg-light-surface p-5 rounded-2xl border border-neutral-800 dark:border-light-border hover:border-neutral-700 dark:hover:border-neutral-300 transition-colors">
+          <div className="bg-ash-surface dark:bg-light-surface p-5 rounded-2xl border border-ash-darker dark:border-light-border hover:border-neutral-600 dark:hover:border-neutral-300 transition-colors shadow-sm">
             <div className="flex items-center gap-3 mb-2">
-              <div className="p-2 bg-indigo-500/20 dark:bg-indigo-500/10 rounded-lg text-indigo-400 dark:text-indigo-600"><User size={18} /></div>
-              <h3 className="font-bold text-neutral-200 dark:text-light-text text-sm">{t('digitalArchive')}</h3>
+              <div className="p-2 bg-indigo-500/10 dark:bg-indigo-500/10 rounded-lg text-indigo-400 dark:text-indigo-600"><User size={18} /></div>
+              <h3 className="font-bold text-gray-200 dark:text-light-text text-sm">{t('digitalArchive')}</h3>
             </div>
-            <p className="text-xs text-neutral-400 dark:text-neutral-600 leading-relaxed">{t('archiveDesc')}</p>
+            <p className="text-xs text-gray-400 dark:text-neutral-600 leading-relaxed">{t('archiveDesc')}</p>
           </div>
           
            {/* Card 2 */}
-           <div className="bg-neutral-900/50 dark:bg-light-surface p-5 rounded-2xl border border-neutral-800 dark:border-light-border hover:border-neutral-700 dark:hover:border-neutral-300 transition-colors">
+           <div className="bg-ash-surface dark:bg-light-surface p-5 rounded-2xl border border-ash-darker dark:border-light-border hover:border-neutral-600 dark:hover:border-neutral-300 transition-colors shadow-sm">
             <div className="flex items-center gap-3 mb-2">
-              <div className="p-2 bg-pink-500/20 dark:bg-pink-500/10 rounded-lg text-pink-400 dark:text-pink-600"><ImageIcon size={18} /></div>
-              <h3 className="font-bold text-neutral-200 dark:text-light-text text-sm">{t('personalBranding')}</h3>
+              <div className="p-2 bg-pink-500/10 dark:bg-pink-500/10 rounded-lg text-pink-400 dark:text-pink-600"><ImageIcon size={18} /></div>
+              <h3 className="font-bold text-gray-200 dark:text-light-text text-sm">{t('personalBranding')}</h3>
             </div>
-            <p className="text-xs text-neutral-400 dark:text-neutral-600 leading-relaxed">{t('brandingDesc')}</p>
+            <p className="text-xs text-gray-400 dark:text-neutral-600 leading-relaxed">{t('brandingDesc')}</p>
           </div>
         </div>
       </section>
 
       {/* --- PROCESS SECTION --- */}
       <section>
-          <h2 className="text-lg font-bold mb-6 flex items-center gap-2 px-2 text-neutral-100 dark:text-light-text">
+          <h2 className="text-lg font-bold mb-6 flex items-center gap-2 px-2 text-ash-text dark:text-light-text">
             <Settings size={20} className="text-cyan-400" />
             {t('howTo')}
           </h2>
 
           <div className="space-y-6 relative px-2">
-            <div className="absolute left-[30px] top-4 bottom-4 w-0.5 bg-neutral-800 dark:bg-light-border"></div>
+            {/* Garis vertikal timeline */}
+            <div className="absolute left-[30px] top-4 bottom-4 w-0.5 bg-ash-darker dark:bg-light-border"></div>
 
             <div className="relative flex items-center gap-5">
-              <div className="z-10 w-12 h-12 shrink-0 rounded-full bg-neutral-950 dark:bg-light-bg border-2 border-indigo-500 flex items-center justify-center text-indigo-400 shadow-[0_0_15px_rgba(99,102,241,0.2)]"><FileText size={20} /></div>
-              <div><h3 className="font-bold text-white dark:text-light-text text-sm">1. {t('step1')}</h3><p className="text-xs text-neutral-500 dark:text-neutral-600 mt-1">{t('step1Desc')}</p></div>
+              <div className="z-10 w-12 h-12 shrink-0 rounded-full bg-ash dark:bg-light-bg border-2 border-indigo-500 flex items-center justify-center text-indigo-400 shadow-[0_0_15px_rgba(99,102,241,0.2)]"><FileText size={20} /></div>
+              <div><h3 className="font-bold text-gray-200 dark:text-light-text text-sm">1. {t('step1')}</h3><p className="text-xs text-gray-400 dark:text-neutral-600 mt-1">{t('step1Desc')}</p></div>
             </div>
 
              <div className="relative flex items-center gap-5">
-              <div className="z-10 w-12 h-12 shrink-0 rounded-full bg-neutral-950 dark:bg-light-bg border-2 border-cyan-500 flex items-center justify-center text-cyan-400 shadow-[0_0_15px_rgba(6,182,212,0.2)]"><Settings size={20} /></div>
-              <div><h3 className="font-bold text-white dark:text-light-text text-sm">2. {t('step2')}</h3><p className="text-xs text-neutral-500 dark:text-neutral-600 mt-1">{t('step2Desc')}</p></div>
+              <div className="z-10 w-12 h-12 shrink-0 rounded-full bg-ash dark:bg-light-bg border-2 border-cyan-500 flex items-center justify-center text-cyan-400 shadow-[0_0_15px_rgba(6,182,212,0.2)]"><Settings size={20} /></div>
+              <div><h3 className="font-bold text-gray-200 dark:text-light-text text-sm">2. {t('step2')}</h3><p className="text-xs text-gray-400 dark:text-neutral-600 mt-1">{t('step2Desc')}</p></div>
             </div>
 
              <div className="relative flex items-center gap-5">
-              <div className="z-10 w-12 h-12 shrink-0 rounded-full bg-neutral-950 dark:bg-light-bg border-2 border-green-500 flex items-center justify-center text-green-400 shadow-[0_0_15px_rgba(6,182,212,0.2)]"><Globe size={20} /></div>
-              <div><h3 className="font-bold text-white dark:text-light-text text-sm">3. {t('step3')}</h3><p className="text-xs text-neutral-500 dark:text-neutral-600 mt-1">{t('step3Desc')}</p></div>
+              <div className="z-10 w-12 h-12 shrink-0 rounded-full bg-ash dark:bg-light-bg border-2 border-green-500 flex items-center justify-center text-green-400 shadow-[0_0_15px_rgba(34,197,94,0.2)]"><Globe size={20} /></div>
+              <div><h3 className="font-bold text-gray-200 dark:text-light-text text-sm">3. {t('step3')}</h3><p className="text-xs text-gray-400 dark:text-neutral-600 mt-1">{t('step3Desc')}</p></div>
             </div>
           </div>
       </section>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Flame, Layout, Monitor } from 'lucide-react';
 import { portfolioItems, specialItems, USER_INFO, categoryStyles } from '../data/data';
 import { useLanguage } from '../contexts/LanguageContext';
+import SkeletonImage from '../components/SkeletonImage';
 
 const Catalog = ({ onNavigate, setSelectedTheme }) => {
   const { t } = useLanguage();
@@ -38,13 +39,13 @@ const Catalog = ({ onNavigate, setSelectedTheme }) => {
       
       {/* --- HEADER --- */}
       <div>
-        <h2 className="text-2xl font-bold text-white dark:text-light-text">
+        <h2 className="text-2xl font-bold text-ash-text dark:text-light-text">
           Gallery{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-cyan-300">
             Desain
           </span>
         </h2>
-        <p className="text-neutral-400 dark:text-neutral-600 text-xs">Sentuh gambar untuk melihat detail.</p>
+        <p className="text-gray-400 dark:text-neutral-600 text-xs">Sentuh gambar untuk melihat detail.</p>
       </div>
 
       {/* --- SECTION 1: LIMITED EDITION --- */}
@@ -52,14 +53,14 @@ const Catalog = ({ onNavigate, setSelectedTheme }) => {
         <div>
             <div className="flex items-center gap-2 mb-4 px-1">
             <Flame size={18} className="text-purple-500 fill-purple-500 animate-pulse" />
-            <h3 className="text-sm font-bold text-white dark:text-light-text uppercase tracking-wider">
+            <h3 className="text-sm font-bold text-ash-text dark:text-light-text uppercase tracking-wider">
                 {activeCategory === 'All' ? 'Limited / Special Edition' : `Special ${activeCategory}`}
             </h3>
             </div>
 
             <div className="flex overflow-x-auto gap-4 pb-4 -mx-6 px-6 scrollbar-hide snap-x snap-mandatory">
             {filteredSpecial.map((item) => (
-                <div key={item.id} className="snap-center shrink-0 w-[85vw] sm:w-80 relative bg-neutral-900 dark:bg-light-surface rounded-2xl border border-purple-500/50 dark:border-purple-400/30 overflow-hidden shadow-[0_0_15px_rgba(168,85,247,0.15)] dark:shadow-none flex flex-col">
+                <div key={item.id} className="snap-center shrink-0 w-[85vw] sm:w-80 relative bg-ash-surface dark:bg-light-surface rounded-2xl border border-purple-500/30 dark:border-purple-400/30 overflow-hidden shadow-[0_0_15px_rgba(168,85,247,0.1)] dark:shadow-none flex flex-col group hover:border-purple-500/60 transition-colors">
                 <div className="absolute top-3 right-3 bg-purple-600 dark:bg-purple-700 text-white text-[10px] font-bold px-2 py-1 rounded shadow-lg z-20">
                     LIMITED
                 </div>
@@ -67,24 +68,29 @@ const Catalog = ({ onNavigate, setSelectedTheme }) => {
                     {item.image.endsWith('.mp4') ? (
                         <video src={item.image} autoPlay loop muted playsInline className="w-full h-full object-cover" />
                     ) : (
-                        <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                        <SkeletonImage 
+                          src={item.image} 
+                          alt={item.title} 
+                          className="w-full h-full"
+                        />
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 dark:from-light-bg via-transparent to-transparent"></div>
+                    {/* MIKI: Gradient disesuaikan ke ash-surface supaya nyatu */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-ash-surface dark:from-light-surface via-transparent to-transparent"></div>
                 </div>
                 <div className="p-4 flex flex-col flex-1">
                     <div className="text-[10px] font-bold text-purple-400 dark:text-purple-600 mb-1">{item.theme}</div>
-                    <h3 className="text-lg font-bold text-white dark:text-light-text mb-1 leading-tight">{item.title}</h3>
-                    <p className="text-[10px] text-neutral-400 dark:text-neutral-600 mb-3 line-clamp-2 leading-relaxed">{item.desc}</p>
+                    <h3 className="text-lg font-bold text-ash-text dark:text-light-text mb-1 leading-tight">{item.title}</h3>
+                    <p className="text-[10px] text-gray-400 dark:text-neutral-600 mb-3 line-clamp-2 leading-relaxed">{item.desc}</p>
                     <div className="flex flex-wrap gap-1.5 mb-4 mt-auto">
                         {item.features && item.features.slice(0, 2).map((f, idx) => (
-                        <span key={idx} className="px-1.5 py-0.5 bg-neutral-800 dark:bg-light-border text-[9px] text-neutral-300 dark:text-neutral-700 rounded border border-neutral-700 dark:border-neutral-300">{f}</span>
+                        <span key={idx} className="px-1.5 py-0.5 bg-ash-darker dark:bg-light-border text-[9px] text-gray-300 dark:text-neutral-700 rounded border border-ash-darker dark:border-neutral-300">{f}</span>
                         ))}
                     </div>
                     <div className="flex items-center justify-between gap-2">
                         <span className="font-bold text-white dark:text-light-text text-sm">{item.price}</span>
                         <button 
                         onClick={() => handleBuySpecial(item)} 
-                        className="bg-purple-600 dark:bg-purple-700 hover:bg-purple-500 dark:hover:bg-purple-600 text-white text-[10px] font-bold py-2 px-4 rounded-lg shadow-lg shadow-purple-900/20"
+                        className="bg-purple-600 dark:bg-purple-700 hover:bg-purple-500 dark:hover:bg-purple-600 text-white text-[10px] font-bold py-2 px-4 rounded-lg shadow-lg shadow-purple-900/20 active:scale-95 transition-transform"
                         >
                         Ambil ini
                         </button>
@@ -99,7 +105,7 @@ const Catalog = ({ onNavigate, setSelectedTheme }) => {
       {/* --- SECTION 2: STANDARD COLLECTION (PREMIUM REFRESH) --- */}
       <div>
         <div className="flex items-center justify-between mb-4 px-1">
-          <h3 className="text-sm font-bold text-white dark:text-light-text flex items-center gap-2">
+          <h3 className="text-sm font-bold text-ash-text dark:text-light-text flex items-center gap-2">
             <Layout size={18} className="text-indigo-400" />
             Standard Collection
           </h3>
@@ -116,8 +122,8 @@ const Catalog = ({ onNavigate, setSelectedTheme }) => {
               }}
               className={`px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all border
                 ${activeCategory === cat 
-                  ? 'bg-white dark:bg-light-text text-black dark:text-neutral-950 border-white dark:border-light-text shadow-lg shadow-white/10 scale-105' 
-                  : 'bg-neutral-900/50 dark:bg-light-surface text-neutral-500 dark:text-neutral-600 border-neutral-800 dark:border-light-border hover:border-neutral-600 dark:hover:border-neutral-400'}`}
+                  ? 'bg-ash-text dark:bg-light-text text-ash-darker dark:text-neutral-950 border-ash-text dark:border-light-text shadow-lg shadow-white/5 scale-105' 
+                  : 'bg-ash-darker dark:bg-light-surface text-gray-500 dark:text-neutral-600 border-ash-darker dark:border-light-border hover:border-neutral-600 dark:hover:border-neutral-400'}`}
             >
               {cat}
             </button>
@@ -133,7 +139,7 @@ const Catalog = ({ onNavigate, setSelectedTheme }) => {
                 
                 return (
                   <div key={item.id} className="snap-center shrink-0 w-[85vw] sm:w-[400px]">
-                    <div className="rounded-3xl border border-neutral-700 dark:border-light-border bg-gradient-to-br from-neutral-900/60 dark:from-light-surface to-neutral-950/80 dark:to-light-surface overflow-hidden shadow-xl dark:shadow-none flex flex-col group backdrop-blur-sm transition-all hover:border-indigo-500/60 dark:hover:border-indigo-400 hover:shadow-2xl hover:shadow-indigo-500/10">
+                    <div className="rounded-3xl border border-ash-darker dark:border-light-border bg-gradient-to-br from-ash-surface/60 dark:from-light-surface to-ash-darker/80 dark:to-light-surface overflow-hidden shadow-xl dark:shadow-none flex flex-col group backdrop-blur-sm transition-all hover:border-indigo-500/40 dark:hover:border-indigo-400 hover:shadow-2xl hover:shadow-indigo-500/5">
                       
                       {/* IMAGE AREA (Focus 4:5 Aspect) */}
                       <div className="relative aspect-[4/5] overflow-hidden cursor-pointer" onClick={() => toggleOverlay(item.id)}>
@@ -142,19 +148,20 @@ const Catalog = ({ onNavigate, setSelectedTheme }) => {
                           <span className="opacity-80">✦</span> {item.category}
                         </div>
 
-                        <img 
+                       <SkeletonImage 
                           src={item.image} 
                           alt={item.title} 
-                          loading="lazy"
-                          className="w-full h-full object-cover transition-transform duration-700" 
+                          className="w-full h-full"
+                          loading="lazy"  // <--- TAMBAHKAN BARIS AJAIB INI
                         />
-                        
+                                                
                         {/* INTERACTIVE OVERLAY */}
-                        <div className={`absolute inset-0 bg-gradient-to-t from-neutral-950 dark:from-light-bg via-neutral-950/70 dark:via-light-surface/70 to-transparent flex flex-col justify-end p-6 transition-all duration-500
+                        {/* MIKI: Gradient diubah ke ash-darker */}
+                        <div className={`absolute inset-0 bg-gradient-to-t from-ash-darker dark:from-light-bg via-ash-darker/80 dark:via-light-surface/70 to-transparent flex flex-col justify-end p-6 transition-all duration-500
                           ${activeCardId === item.id ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0'}`}
                         >
                           <h4 className="text-white dark:text-light-text font-black text-xl mb-2 tracking-tight uppercase">{item.title}</h4>
-                          <p className="text-neutral-300 dark:text-neutral-700 text-sm leading-relaxed line-clamp-4 mb-6 font-medium opacity-90">
+                          <p className="text-gray-300 dark:text-neutral-700 text-sm leading-relaxed line-clamp-4 mb-6 font-medium opacity-90">
                             "{item.desc}"
                           </p>
                           <button 
@@ -167,12 +174,12 @@ const Catalog = ({ onNavigate, setSelectedTheme }) => {
                       </div>
 
                       {/* PREVIEW BAR */}
-                      <div className="p-4 bg-neutral-950/60 dark:bg-light-surface border-t border-neutral-800 dark:border-light-border flex justify-center items-center">
+                      <div className="p-4 bg-ash-darker dark:bg-light-surface border-t border-ash-darker dark:border-light-border flex justify-center items-center">
                         <a 
                           href={item.demoLink}
                           target="_blank"
                           rel="noreferrer"
-                          className="flex items-center gap-2 text-xs font-bold text-neutral-400 dark:text-neutral-600 hover:text-white dark:hover:text-neutral-800 transition-colors tracking-widest uppercase"
+                          className="flex items-center gap-2 text-xs font-bold text-gray-400 dark:text-neutral-600 hover:text-white dark:hover:text-neutral-800 transition-colors tracking-widest uppercase"
                         >
                           <Monitor size={16} className="text-indigo-400" /> Buka Website
                         </a>
@@ -183,8 +190,8 @@ const Catalog = ({ onNavigate, setSelectedTheme }) => {
               })
             ) : (
               /* Empty State */
-              <div className="w-[85vw] text-center py-20 bg-neutral-900/20 dark:bg-light-surface rounded-3xl border border-dashed border-neutral-800 dark:border-light-border mx-auto">
-                <p className="text-xs text-neutral-500 dark:text-neutral-600 font-bold uppercase tracking-[0.2em]">Desain belum tersedia</p>
+              <div className="w-[85vw] text-center py-20 bg-ash-surface dark:bg-light-surface rounded-3xl border border-dashed border-ash-darker dark:border-light-border mx-auto">
+                <p className="text-xs text-gray-500 dark:text-neutral-600 font-bold uppercase tracking-[0.2em]">Desain belum tersedia</p>
               </div>
             )}
           </div>
@@ -192,7 +199,7 @@ const Catalog = ({ onNavigate, setSelectedTheme }) => {
           {/* SCROLL HINT */}
           {filteredStandard.length > 0 && (
             <div className="mt-6 text-center">
-              <p className="text-xs text-neutral-500 dark:text-neutral-600 font-medium tracking-wider uppercase">
+              <p className="text-xs text-gray-500 dark:text-neutral-600 font-medium tracking-wider uppercase">
                 ← Geser ke samping untuk lihat desain lainnya →
               </p>
             </div>

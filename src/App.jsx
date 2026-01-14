@@ -38,7 +38,8 @@ const App = () => {
   return (
     <ThemeProvider>
       <LanguageProvider>
-        <div className={`min-h-screen bg-neutral-950 dark:bg-light-bg text-neutral-100 dark:text-light-text font-sans pb-24 selection:bg-indigo-500 selection:text-white transition-colors duration-500`}>
+        {/* MIKI UPDATE: Mengganti bg-neutral-950 jadi bg-ash */}
+        <div className={`min-h-screen bg-ash text-ash-text dark:bg-light-bg dark:text-light-text font-sans pb-24 selection:bg-indigo-500 selection:text-white transition-colors duration-500`}>
           
           {/* Header Top Fixed */}
           <Navbar />
