@@ -27,7 +27,7 @@ const App = () => {
       case 'catalog':
         return <Catalog onNavigate={setActiveTab} setSelectedTheme={setSelectedTheme} />;
       case 'pricing':
-        return <Pricing selectedTheme={selectedTheme} />;
+        return <Pricing selectedTheme={selectedTheme} setSelectedTheme={setSelectedTheme} />;
       case 'profile':
         return <Profile />;
       default:

@@ -259,7 +259,7 @@ export const pricingTiers = [
   {
     id: 'basic',
     name: "Paket Pelajar",
-    price: "Rp150.000",
+    price: "Rp225.000",
     desc: "Simpel, cepat, dan tanpa biaya bulanan.",
     bestFor: "Tugas Sekolah / Link Bio",
     icon: <Smartphone size={20} className="text-blue-400" />,
@@ -267,24 +267,27 @@ export const pricingTiers = [
       "1 Halaman Website Simpel", 
       "Tampilan Bagus di HP & Laptop", 
       "Tombol Chat ke WhatsApp", 
-      "Hosting Gratis Selamanya"
+      "Hosting Gratis Selamanya",
+      "Domain Numpang (netlify.app)",
+      "Animasi dasar (hover & fade-in)"
     ],
     highlight: false,
     borderColor: "border-neutral-800"
   },
   {
     id: 'standard',
-    name: "Personal Branding",
-    price: "Rp250.000",
+    name: "Paket Normal",
+    price: "Rp525.000",
     desc: "Tampil beda dan terlihat profesional.",
     bestFor: "Mahasiswa / Fresh Grad / Jobseeker",
     icon: <Star size={20} className="text-yellow-400" />,
     features: [
       "Semua Fitur Paket Pelajar", 
+      "Gratis Domain .MY.ID (1 Tahun)",
       "Bebas Request Warna & Font", 
       "Galeri Portofolio (Pamer Karya)", 
       "Sambung ke IG & TikTok",
-      "Animasi Hover & Scroll"
+      "Animasi Lanjutan"
     ],
     highlight: true,
     borderColor: "border-yellow-500/50"
@@ -292,12 +295,13 @@ export const pricingTiers = [
   {
     id: 'premium',
     name: "Paket Premium", // Or "Pro Creator" if you want to sound cool
-    price: "Rp550.000",
+    price: "Rp750.000",
     desc: "Tampilan mewah, interaktif, dan terima beres.", // Changed to emphasize convenience
     bestFor: "Influencer / Selebgram",
     icon: <Shield size={20} className="text-purple-400" />,
     features: [
-      "Desain 'Long Page' & Animasi", // Combined visual features
+      "Desain 'Long Page' & Special Effects", // Combined visual features
+      "Gratis Domain .COM / .ID (1 Tahun)",
       "Fitur Auto-Play Musik/Video",
       "Galeri Foto Besar (Max 15)",
       "Gratis Setup Hosting (Terima Beres)", // KEY POINT: They don't need to watch a tutorial
@@ -353,4 +357,4 @@ export const categoryStyles = {
   'Creative Portfolio': 'bg-purple-500/20 text-purple-400 border-purple-500/50',
   'UMKM / Jasa': 'bg-blue-500/20 text-blue-400 border-blue-500/50',
   'default': 'bg-neutral-500/20 text-neutral-400 border-neutral-500/50'
-};
+};  

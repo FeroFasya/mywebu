@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Flame, Layout, Monitor } from 'lucide-react';
+import { Flame, Layout, Monitor, Hand, ArrowRight } from 'lucide-react';
 import { portfolioItems, specialItems, USER_INFO, categoryStyles } from '../data/data';
 import { useLanguage } from '../contexts/LanguageContext';
 import SkeletonImage from '../components/SkeletonImage';
@@ -9,9 +9,12 @@ const Catalog = ({ onNavigate, setSelectedTheme }) => {
   const [activeCategory, setActiveCategory] = useState('All');
   const [activeCardId, setActiveCardId] = useState(null);
 
+  // MIKI: Logic ini akan membawa data 'item' ke App.jsx, lalu ke Pricing.jsx
   const handleSelectStandard = (item) => {
     setSelectedTheme(item);
     onNavigate('pricing');
+    // Miki: Scroll ke atas sedikit biar smooth saat pindah halaman
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleBuySpecial = (item) => {
@@ -74,7 +77,6 @@ const Catalog = ({ onNavigate, setSelectedTheme }) => {
                           className="w-full h-full"
                         />
                     )}
-                    {/* MIKI: Gradient disesuaikan ke ash-surface supaya nyatu */}
                     <div className="absolute inset-0 bg-gradient-to-t from-ash-surface dark:from-light-surface via-transparent to-transparent"></div>
                 </div>
                 <div className="p-4 flex flex-col flex-1">
@@ -99,10 +101,21 @@ const Catalog = ({ onNavigate, setSelectedTheme }) => {
                 </div>
             ))}
             </div>
+            {/* Scroll Hint (Pill Style) */}
+            <div className="mt-8 flex justify-center opacity-80">
+                <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-ash-darker dark:border-neutral-200 bg-ash-surface/50 dark:bg-white/50 backdrop-blur-sm animate-bounce">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-ash-text dark:text-neutral-600">
+                    Geser Kanan
+                </span>
+                <div className="bg-purple-500 rounded-full p-1">
+                    <ArrowRight size={10} className="text-white" />
+                </div>
+                </div>
+            </div>
         </div>
       )}
 
-      {/* --- SECTION 2: STANDARD COLLECTION (PREMIUM REFRESH) --- */}
+      {/* --- SECTION 2: STANDARD COLLECTION --- */}
       <div>
         <div className="flex items-center justify-between mb-4 px-1">
           <h3 className="text-sm font-bold text-ash-text dark:text-light-text flex items-center gap-2">
@@ -131,7 +144,11 @@ const Catalog = ({ onNavigate, setSelectedTheme }) => {
         </div>
 
         {/* THE SNAP SLIDER CONTAINER */}
-        <div className="relative -mx-6">
+        <div className="relative -mx-6 group">
+          
+          {/* FADING GRADIENT (Rahasia UX Mahal) */}
+          <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-ash dark:from-light-bg to-transparent z-10 pointer-events-none group-hover:opacity-0 transition-opacity duration-500"></div>
+
           <div className="flex overflow-x-auto gap-4 px-6 pb-4 snap-x snap-mandatory scrollbar-hide">
             {filteredStandard.length > 0 ? (
               filteredStandard.map((item) => {
@@ -141,22 +158,20 @@ const Catalog = ({ onNavigate, setSelectedTheme }) => {
                   <div key={item.id} className="snap-center shrink-0 w-[85vw] sm:w-[400px]">
                     <div className="rounded-3xl border border-ash-darker dark:border-light-border bg-gradient-to-br from-ash-surface/60 dark:from-light-surface to-ash-darker/80 dark:to-light-surface overflow-hidden shadow-xl dark:shadow-none flex flex-col group backdrop-blur-sm transition-all hover:border-indigo-500/40 dark:hover:border-indigo-400 hover:shadow-2xl hover:shadow-indigo-500/5">
                       
-                      {/* IMAGE AREA (Focus 4:5 Aspect) */}
+                      {/* IMAGE AREA */}
                       <div className="relative aspect-[4/5] overflow-hidden cursor-pointer" onClick={() => toggleOverlay(item.id)}>
-                        {/* Legend Label */}
                         <div className={`absolute top-4 right-4 z-20 px-3 py-1.5 rounded-full border text-xs font-black backdrop-blur-xl shadow-lg uppercase ${styleClass}`}>
                           <span className="opacity-80">✦</span> {item.category}
                         </div>
 
-                       <SkeletonImage 
+                        <SkeletonImage 
                           src={item.image} 
                           alt={item.title} 
                           className="w-full h-full"
-                          loading="lazy"  // <--- TAMBAHKAN BARIS AJAIB INI
+                          loading="lazy"
                         />
-                                                
+                                                        
                         {/* INTERACTIVE OVERLAY */}
-                        {/* MIKI: Gradient diubah ke ash-darker */}
                         <div className={`absolute inset-0 bg-gradient-to-t from-ash-darker dark:from-light-bg via-ash-darker/80 dark:via-light-surface/70 to-transparent flex flex-col justify-end p-6 transition-all duration-500
                           ${activeCardId === item.id ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0'}`}
                         >
@@ -168,7 +183,7 @@ const Catalog = ({ onNavigate, setSelectedTheme }) => {
                             onClick={(e) => { e.stopPropagation(); handleSelectStandard(item); }}
                             className="w-full py-3.5 bg-gradient-to-r from-indigo-600 to-indigo-500 dark:from-indigo-600 dark:to-indigo-700 text-white dark:text-white text-xs font-black rounded-xl hover:from-indigo-500 hover:to-indigo-400 dark:hover:from-indigo-500 dark:hover:to-indigo-600 transition-all active:scale-95 shadow-lg shadow-indigo-900/40 uppercase tracking-widest"
                           >
-                            Pilih Desain
+                            Pilih Desain Ini
                           </button>
                         </div>
                       </div>
@@ -181,7 +196,7 @@ const Catalog = ({ onNavigate, setSelectedTheme }) => {
                           rel="noreferrer"
                           className="flex items-center gap-2 text-xs font-bold text-gray-400 dark:text-neutral-600 hover:text-white dark:hover:text-neutral-800 transition-colors tracking-widest uppercase"
                         >
-                          <Monitor size={16} className="text-indigo-400" /> Buka Website
+                          <Monitor size={16} className="text-indigo-400" /> Buka Demo Website
                         </a>
                       </div>
                     </div>
@@ -189,19 +204,23 @@ const Catalog = ({ onNavigate, setSelectedTheme }) => {
                 );
               })
             ) : (
-              /* Empty State */
               <div className="w-[85vw] text-center py-20 bg-ash-surface dark:bg-light-surface rounded-3xl border border-dashed border-ash-darker dark:border-light-border mx-auto">
                 <p className="text-xs text-gray-500 dark:text-neutral-600 font-bold uppercase tracking-[0.2em]">Desain belum tersedia</p>
               </div>
             )}
           </div>
 
-          {/* SCROLL HINT */}
+          {/* SCROLL HINT (Option 1 Pill) */}
           {filteredStandard.length > 0 && (
-            <div className="mt-6 text-center">
-              <p className="text-xs text-gray-500 dark:text-neutral-600 font-medium tracking-wider uppercase">
-                ← Geser ke samping untuk lihat desain lainnya →
-              </p>
+            <div className="mt-8 flex justify-center">
+                <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-ash-darker dark:border-neutral-200 bg-ash-surface/50 dark:bg-white/50 backdrop-blur-sm animate-bounce">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-ash-text dark:text-neutral-600">
+                    Geser Kanan
+                </span>
+                <div className="bg-indigo-500 rounded-full p-1">
+                    <ArrowRight size={10} className="text-white" />
+                </div>
+                </div>
             </div>
           )}
         </div>
