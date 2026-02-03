@@ -60,46 +60,46 @@ const Pricing = ({ selectedTheme, onNavigate, setSelectedTheme }) => {
 
   const renderCell = (value) => {
     if (value === true) return <div className="flex justify-center"><CheckCircle size={18} className="text-green-500" /></div>;
-    if (value === false) return <div className="flex justify-center"><Minus size={18} className="text-ash-darker dark:text-neutral-700" /></div>;
-    return <span className="text-xs font-medium text-gray-400 dark:text-neutral-500">{value}</span>;
+    if (value === false) return <div className="flex justify-center"><Minus size={18} className="text-ash-darker dark:text-neutral-300" /></div>;
+    return <span className="text-xs font-medium text-gray-400 dark:text-neutral-600">{value}</span>;
   };
 
   const getHeaderColor = (index) => {
-    const colors = ['text-blue-400', 'text-yellow-400', 'text-indigo-400', 'text-amber-400'];
-    return colors[index] || 'text-ash-text';
+    const colors = ['text-blue-400 dark:text-blue-600', 'text-yellow-400 dark:text-yellow-600', 'text-indigo-400 dark:text-indigo-600', 'text-amber-400 dark:text-amber-600'];
+    return colors[index] || 'text-ash-text dark:text-black';
   };
 
   return (
-    <div className="space-y-8 pb-8 animate-fade-in">
+    <div className="space-y-10 pb-12 animate-fade-in">
       
       {/* Header Section */}
        <div>
-         <h2 className="text-2xl font-bold text-ash-text dark:text-light-text">
+         <h2 className="text-3xl font-black text-ash-text dark:text-light-text tracking-tight">
           Investasi{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-cyan-300">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">
             Terbaik
           </span>
         </h2>
-          <p className="text-gray-400 dark:text-neutral-600 text-xs">Pilih paket sesuai kebutuhanmu sekarang.</p>
+          <p className="text-gray-400 dark:text-neutral-500 text-sm font-medium mt-1">Pilih paket sesuai kebutuhanmu sekarang.</p>
         </div>
 
-      {/* --- SELECTED DESIGN BANNER --- */}
+      {/* --- SELECTED DESIGN BANNER (Hybrid Clean) --- */}
       {selectedTheme && (
-        <div className="relative bg-gradient-to-r from-ash-surface to-ash-darker dark:from-white dark:to-neutral-100 rounded-2xl border border-indigo-500/30 dark:border-indigo-200 p-4 flex items-center justify-between shadow-lg shadow-indigo-900/10 animate-fade-in-up">
+        <div className="relative bg-ash-surface dark:bg-white rounded-3xl border border-ash-darker dark:border-gray-200 p-1 flex items-center justify-between shadow-lg shadow-black/10 animate-fade-in-up pr-6">
             <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-lg bg-ash-darker overflow-hidden border border-ash-text/10 shrink-0">
+                <div className="w-16 h-16 rounded-2xl bg-ash-darker overflow-hidden border border-ash-darker shrink-0 m-1">
                     <img src={selectedTheme.image} alt="Selected" className="w-full h-full object-cover" />
                 </div>
                 <div>
-                    <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-bold bg-indigo-500 text-white px-2 py-0.5 rounded-full">
+                    <div className="flex items-center gap-2 mb-1">
+                        <span className="text-[9px] font-black bg-indigo-500 text-white px-2 py-0.5 rounded-md uppercase tracking-wider shadow-sm">
                             TERPILIH
                         </span>
-                        <span className="text-[10px] text-gray-400 dark:text-neutral-500 uppercase tracking-wider">
+                        <span className="text-[10px] font-bold text-gray-400 dark:text-neutral-500 uppercase tracking-wider">
                             {selectedTheme.category} ({isBusinessDesign ? 'Bisnis' : 'Pribadi'})
                         </span>
                     </div>
-                    <h3 className="text-sm font-bold text-white dark:text-neutral-800 line-clamp-1 mt-0.5">
+                    <h3 className="text-sm font-black text-white dark:text-neutral-800 line-clamp-1">
                         {selectedTheme.title}
                     </h3>
                 </div>
@@ -109,12 +109,12 @@ const Pricing = ({ selectedTheme, onNavigate, setSelectedTheme }) => {
                     setSelectedTheme(null);
                     onNavigate('catalog');
                 }}
-                className="group flex flex-col items-center justify-center gap-1 pl-4 border-l border-ash-text/10"
+                className="group flex flex-col items-center justify-center gap-1 pl-6 border-l border-ash-darker dark:border-gray-100"
             >
-                <div className="p-2 rounded-full bg-ash-darker dark:bg-neutral-200 group-hover:bg-red-500/20 dark:group-hover:bg-red-200 transition-colors">
-                    <X size={16} className="text-gray-400 dark:text-neutral-500 group-hover:text-red-500 dark:group-hover:text-red-600" />
+                <div className="p-2 rounded-xl bg-ash-darker dark:bg-gray-100 group-hover:bg-red-500/10 dark:group-hover:bg-red-50 transition-colors border border-transparent group-hover:border-red-200">
+                    <X size={16} className="text-gray-400 dark:text-neutral-500 group-hover:text-red-500" strokeWidth={2.5} />
                 </div>
-                <span className="text-[9px] font-medium text-gray-500 group-hover:text-red-400 transition-colors">
+                <span className="text-[9px] font-bold text-gray-500 group-hover:text-red-400 transition-colors uppercase tracking-wide">
                     Ganti
                 </span>
             </button>
@@ -143,146 +143,147 @@ const Pricing = ({ selectedTheme, onNavigate, setSelectedTheme }) => {
             return (
               <div 
                 key={tier.id} 
-                className={`relative p-6 rounded-2xl border transition-all duration-300 group
-                  ${/* Style Kondisional: Locked vs Active */ ''}
+                className={`relative p-6 rounded-3xl border transition-all duration-300 group flex flex-col
                   ${isLocked 
-                    ? 'bg-ash-darker/50 dark:bg-neutral-200/50 border-transparent opacity-60 cursor-not-allowed grayscale-[0.8]' 
+                    ? 'bg-ash-surface/50 dark:bg-gray-100/50 border-transparent opacity-60 cursor-not-allowed grayscale' 
                     : tier.isSpecial 
-                        ? 'bg-gradient-to-b from-ash-surface to-[#252015] border-amber-500/30 shadow-lg shadow-amber-500/10 dark:from-amber-50 dark:to-white dark:border-amber-200 dark:shadow-amber-500/10 hover:shadow-xl' 
+                        ? 'bg-gradient-to-b from-ash-surface to-[#252015] border-amber-500/30 shadow-xl shadow-amber-900/10 dark:from-white dark:to-amber-50 dark:border-amber-200 hover:-translate-y-1' 
                     : tier.highlight
-                        ? 'bg-gradient-to-b from-ash-surface to-[#1e1f28] border-indigo-500/30 shadow-lg shadow-indigo-500/10 dark:from-indigo-50 dark:to-white dark:border-indigo-200 dark:shadow-indigo-500/10 hover:shadow-xl'
-                    : 'bg-ash-surface border-ash-darker hover:border-neutral-600 dark:bg-white dark:border-neutral-200 dark:hover:border-neutral-300 hover:shadow-xl'
+                        ? 'bg-gradient-to-b from-ash-surface to-[#1e1f28] border-indigo-500/30 shadow-xl shadow-indigo-900/10 dark:from-white dark:to-indigo-50 dark:border-indigo-200 hover:-translate-y-1'
+                    : 'bg-ash-surface border-ash-darker dark:bg-white dark:border-gray-200 shadow-xl shadow-black/5 dark:shadow-gray-200/50 hover:-translate-y-1'
                   }
                 `}
               >
-                {/* --- MIKI: OVERLAY PESAN KUNCI (Muncul kalau isLocked) --- */}
+                {/* --- MIKI: OVERLAY PESAN KUNCI --- */}
                 {isLocked && (
-                    <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-4 text-center bg-ash-darker/80 dark:bg-white/80 backdrop-blur-[2px] rounded-2xl">
+                    <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-4 text-center bg-ash-darker/80 dark:bg-white/60 backdrop-blur-[2px] rounded-3xl">
                         <Lock size={32} className="text-gray-500 mb-2" />
                         <p className="text-xs font-bold text-gray-300 dark:text-neutral-800">
                             Paket Terkunci
                         </p>
-                        <p className="text-[10px] text-gray-400 dark:text-neutral-600 mt-1 leading-relaxed">
+                        <p className="text-[10px] text-gray-400 dark:text-neutral-600 mt-1 leading-relaxed max-w-[150px]">
                             {lockMessage}
                         </p>
                     </div>
                 )}
 
-                {/* Badges (Only show if not locked) */}
+                {/* Badges - Sticker Style */}
                 {!isLocked && tier.highlight && (
-                  <div className="absolute -top-3 right-4 bg-gradient-to-r from-indigo-600 to-indigo-500 text-white text-[10px] font-bold px-4 py-1.5 rounded-full shadow-lg flex items-center gap-1 border border-indigo-400/20">
-                    <Sparkles size={10} /> POPULAR
+                  <div className="absolute -top-3 right-4 bg-indigo-500 text-white text-[10px] font-black px-3 py-1 rounded-lg shadow-md border-b-2 border-indigo-700 flex items-center gap-1 transform rotate-2">
+                    <Sparkles size={10} strokeWidth={3} /> POPULAR
                   </div>
                 )}
                 {!isLocked && tier.isSpecial && (
-                  <div className="absolute -top-3 right-4 bg-gradient-to-r from-amber-600 to-amber-500 text-white text-[10px] font-bold px-4 py-1.5 rounded-full shadow-lg flex items-center gap-1 border border-amber-400/20">
-                    <Crown size={10} /> SULTAN ONLY
+                  <div className="absolute -top-3 right-4 bg-amber-500 text-white text-[10px] font-black px-3 py-1 rounded-lg shadow-md border-b-2 border-amber-700 flex items-center gap-1 transform -rotate-1">
+                    <Crown size={10} strokeWidth={3} /> SULTAN
                   </div>
                 )}
                 
                 <div className="flex items-start justify-between mb-4">
                   <div>
-                    <h3 className={`text-xl font-bold ${tier.isSpecial ? 'text-amber-400 dark:text-amber-600' : tier.highlight ? 'text-indigo-300 dark:text-indigo-600' : 'text-ash-text dark:text-neutral-800'}`}>
+                    <h3 className={`text-lg font-black ${tier.isSpecial ? 'text-amber-400 dark:text-amber-600' : tier.highlight ? 'text-indigo-400 dark:text-indigo-600' : 'text-ash-text dark:text-neutral-800'}`}>
                       {tier.name}
                     </h3>
-                    <div className={`text-2xl font-bold mt-1 ${tier.isSpecial ? 'text-amber-200 dark:text-amber-700' : 'text-ash-text dark:text-neutral-900'}`}>
+                    <div className={`text-2xl font-black mt-1 tracking-tight ${tier.isSpecial ? 'text-amber-200 dark:text-amber-700' : 'text-white dark:text-black'}`}>
                       {tier.price}
                     </div>
                     {tier.bestFor && (
-                      <div className={`mt-3 inline-block px-3 py-1.5 rounded-lg text-[11px] font-medium border
+                      <div className={`mt-3 inline-block px-3 py-1 rounded-lg text-[10px] font-bold border
                         ${tier.isSpecial 
-                            ? 'bg-amber-900/20 border-amber-500/20 text-amber-300' 
-                            : 'bg-ash-darker dark:bg-light-border border-ash-darker text-gray-400 dark:text-neutral-700'}
+                            ? 'bg-amber-900/20 border-amber-500/20 text-amber-300 dark:bg-amber-100 dark:text-amber-800 dark:border-amber-200' 
+                            : 'bg-ash-darker dark:bg-gray-100 border-ash-darker dark:border-gray-200 text-gray-400 dark:text-gray-600'}
                       `}>
-                        Cocok buat: <span className="font-semibold">{tier.bestFor}</span>
+                        {tier.bestFor}
                       </div>
                     )}
                   </div>
-                  <div className={`p-3 rounded-xl 
+                  <div className={`p-3 rounded-2xl border-b-4
                     ${tier.isSpecial 
-                        ? 'bg-amber-500/10 text-amber-400' 
+                        ? 'bg-amber-500/10 text-amber-400 border-amber-500/20' 
                         : tier.highlight 
-                        ? 'bg-indigo-500/10 text-indigo-400' 
-                        : 'bg-ash-darker dark:bg-light-border text-gray-400 dark:text-neutral-500'}
+                        ? 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20' 
+                        : 'bg-ash-darker dark:bg-gray-100 text-gray-400 dark:text-gray-500 border-ash-text/10 dark:border-gray-200'}
                   `}>
                     {tier.icon}
                   </div>
                 </div>
                 
-                <p className="text-xs text-gray-400 dark:text-neutral-600 mb-5 italic border-l-2 border-ash-darker dark:border-light-border pl-4 py-1">
+                <p className="text-xs text-gray-400 dark:text-gray-500 mb-6 italic border-l-2 border-ash-darker dark:border-gray-200 pl-4 py-1 leading-relaxed">
                   "{tier.desc}"
                 </p>
 
-                <ul className="space-y-3 mb-6">
+                <ul className="space-y-3 mb-8 flex-1">
                   {tier.features.map((feat, i) => (
-                    <li key={i} className="flex items-start gap-3 text-sm text-gray-300 dark:text-neutral-700">
+                    <li key={i} className="flex items-start gap-3 text-sm text-gray-300 dark:text-gray-700 font-medium">
                       <CheckCircle 
                         size={16} 
                         className={`shrink-0 mt-0.5 
-                            ${tier.isSpecial ? 'text-amber-500' : tier.highlight ? 'text-indigo-400' : 'text-gray-500 dark:text-neutral-500'}
+                            ${tier.isSpecial ? 'text-amber-500' : tier.highlight ? 'text-indigo-500' : 'text-gray-500 dark:text-gray-400'}
                         `} 
+                        strokeWidth={2.5}
                       />
                       <span className="leading-snug">{feat}</span>
                     </li>
                   ))}
                 </ul>
                 
+                {/* BUTTON - POP STYLE (Border Bottom Thick) */}
                 <button 
-                  disabled={isLocked} // Matikan tombol kalau terkunci
+                  disabled={isLocked} 
                   onClick={() => !isLocked && handleOrderClick(tier)}
-                  className={`w-full font-bold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 group
+                  className={`w-full font-black text-xs py-4 rounded-xl transition-all flex items-center justify-center gap-2 group border-b-4 active:border-b-0 active:translate-y-1 uppercase tracking-widest
                     ${isLocked 
-                        ? 'bg-transparent text-transparent cursor-not-allowed' // Hidden text, overlay handles it
+                        ? 'bg-transparent text-transparent cursor-not-allowed border-none' 
                         : tier.isSpecial 
-                        ? 'bg-gradient-to-r from-amber-700 to-amber-600 hover:from-amber-600 hover:to-amber-500 text-white shadow-lg shadow-amber-900/20 cursor-pointer' 
+                        ? 'bg-amber-500 hover:bg-amber-400 text-white border-amber-700 shadow-lg shadow-amber-900/20' 
                         : tier.highlight
-                        ? 'bg-gradient-to-r from-indigo-700 to-indigo-600 hover:from-indigo-600 hover:to-indigo-500 text-white shadow-lg shadow-indigo-900/20 cursor-pointer'
-                        : 'bg-ash-darker hover:bg-neutral-700 text-ash-text border border-ash-darker dark:bg-neutral-100 dark:hover:bg-neutral-200 dark:text-neutral-800 dark:border-neutral-300 cursor-pointer'}
+                        ? 'bg-indigo-600 hover:bg-indigo-500 text-white border-indigo-800 shadow-lg shadow-indigo-900/20'
+                        : 'bg-white text-black border-gray-300 hover:bg-gray-50 dark:bg-black dark:text-white dark:border-gray-700 dark:hover:bg-neutral-900'}
                   `}
                 >
-                  {tier.isSpecial ? 'Chat Sultan (Diskusi Dulu)' : `Mau ${tier.name}`} 
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                  {tier.isSpecial ? 'Chat Sultan' : `Pilih ${tier.name}`} 
+                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" strokeWidth={3} />
                 </button>
               </div>
             );
         })}
       </div>
       
-      {/* Comparison Table */}
+      {/* Comparison Table (Clean & Modern) */}
       <div className="py-4">
         <button 
           onClick={() => setShowComparison(!showComparison)}
-          className="mx-auto flex items-center gap-2 text-sm text-gray-400 dark:text-neutral-600 hover:text-white dark:hover:text-neutral-700 transition-colors bg-ash-surface dark:bg-light-surface px-4 py-2 rounded-full border border-ash-darker dark:border-light-border hover:border-neutral-500"
+          className="mx-auto flex items-center gap-2 text-xs font-bold text-gray-400 dark:text-gray-500 hover:text-white dark:hover:text-black transition-all bg-ash-surface dark:bg-white px-6 py-3 rounded-full border-b-4 border-ash-darker dark:border-gray-200 hover:border-indigo-500 dark:hover:border-indigo-500 active:border-b-0 active:translate-y-1 uppercase tracking-wider"
         >
           {showComparison ? "Sembunyikan Perbandingan" : "Lihat Perbandingan Lengkap"}
-          {showComparison ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+          {showComparison ? <ChevronUp size={14} strokeWidth={3} /> : <ChevronDown size={14} strokeWidth={3} />}
         </button>
 
         {showComparison && (
-          <div className="mt-6 overflow-x-auto rounded-2xl border border-ash-darker dark:border-light-border bg-ash-surface/50 dark:bg-light-surface animate-fade-in-up backdrop-blur-sm">
-             <table className="w-full text-left border-collapse min-w-[600px]">
+          <div className="mt-8 overflow-x-auto rounded-3xl border border-ash-darker dark:border-gray-200 bg-ash-surface dark:bg-white animate-fade-in-up shadow-xl">
+             <table className="w-full text-left border-collapse min-w-[700px]">
                <thead>
-                 <tr className="border-b border-ash-darker dark:border-light-border bg-ash-surface dark:bg-light-bg">
-                   <th className="p-4 text-xs font-bold text-gray-400 dark:text-neutral-700 uppercase tracking-wider sticky left-0 bg-ash-surface dark:bg-light-bg z-10 w-1/4 shadow-[2px_0_5px_rgba(0,0,0,0.1)]">
+                 <tr className="border-b border-ash-darker dark:border-gray-100 bg-ash-darker/30 dark:bg-gray-50">
+                   <th className="p-5 text-xs font-black text-gray-500 dark:text-gray-400 uppercase tracking-widest sticky left-0 bg-ash-surface dark:bg-white z-10 w-1/4 shadow-[2px_0_10px_rgba(0,0,0,0.05)]">
                      Fitur
                    </th>
                    {pricingTiers.map((tier, index) => (
-                     <th key={tier.id} className={`p-4 text-xs font-bold text-center uppercase tracking-wider whitespace-nowrap ${getHeaderColor(index)}`}>
+                     <th key={tier.id} className={`p-5 text-xs font-black text-center uppercase tracking-widest whitespace-nowrap ${getHeaderColor(index)}`}>
                        {tier.name}
                      </th>
                    ))}
                  </tr>
                </thead>
-               <tbody className="divide-y divide-ash-darker dark:divide-light-border">
+               <tbody className="divide-y divide-ash-darker dark:divide-gray-100">
                  {comparisonData.map((row, idx) => (
-                   <tr key={idx} className="hover:bg-ash-darker/30 dark:hover:bg-light-border transition-colors">
-                     <td className="p-4 text-xs font-medium text-gray-300 dark:text-neutral-700 sticky left-0 bg-ash-surface dark:bg-light-bg z-10 border-r border-ash-darker dark:border-light-border whitespace-nowrap shadow-[2px_0_5px_rgba(0,0,0,0.1)]">
+                   <tr key={idx} className="hover:bg-ash-darker/20 dark:hover:bg-gray-50 transition-colors">
+                     <td className="p-4 text-xs font-bold text-gray-300 dark:text-gray-700 sticky left-0 bg-ash-surface dark:bg-white z-10 border-r border-ash-darker dark:border-gray-100 whitespace-nowrap shadow-[2px_0_10px_rgba(0,0,0,0.05)]">
                        {row.label}
                      </td>
-                     <td className="p-4 text-center min-w-[100px]">{renderCell(row.basic)}</td>
-                     <td className="p-4 text-center min-w-[100px]">{renderCell(row.standard)}</td>
-                     <td className="p-4 text-center min-w-[100px]">{renderCell(row.premium)}</td>
-                     <td className="p-4 text-center min-w-[100px]">{renderCell(row.exclusive)}</td>
+                     <td className="p-4 text-center min-w-[120px]">{renderCell(row.basic)}</td>
+                     <td className="p-4 text-center min-w-[120px]">{renderCell(row.standard)}</td>
+                     <td className="p-4 text-center min-w-[120px]">{renderCell(row.premium)}</td>
+                     <td className="p-4 text-center min-w-[120px]">{renderCell(row.exclusive)}</td>
                    </tr>
                  ))}
                </tbody>
@@ -292,22 +293,24 @@ const Pricing = ({ selectedTheme, onNavigate, setSelectedTheme }) => {
       </div>
 
        {/* Elegant Divider */}
-      <div className="flex items-center py-4">
-        <div className="h-px flex-1 bg-ash-darker dark:bg-light-border"></div>
-        <span className="px-4 text-xs text-gray-500 dark:text-neutral-600 font-medium">{t('or')}</span>
-        <div className="h-px flex-1 bg-ash-darker dark:bg-light-border"></div>
+      <div className="flex items-center py-4 px-8 opacity-50">
+        <div className="h-0.5 flex-1 bg-ash-darker dark:bg-gray-200 rounded-full"></div>
+        <span className="px-4 text-[10px] font-black text-gray-500 dark:text-gray-400 uppercase tracking-widest">{t('or')}</span>
+        <div className="h-0.5 flex-1 bg-ash-darker dark:bg-gray-200 rounded-full"></div>
       </div>
       
-       {/* Footer Link */}
-      <div className="bg-ash-surface dark:bg-light-bg p-5 rounded-2xl border border-dashed border-ash-darker dark:border-light-border hover:border-neutral-500 dark:hover:border-neutral-400 transition-colors">
-        <div className="flex justify-between items-start mb-3">
+       {/* Footer Link (Template) - Hybrid Style */}
+      <div className="bg-ash-surface dark:bg-white p-6 rounded-3xl border-2 border-dashed border-ash-darker dark:border-gray-300 hover:border-gray-500 dark:hover:border-gray-400 transition-colors">
+        <div className="flex justify-between items-start mb-4">
           <div>
-            <h3 className="text-base font-bold text-ash-text dark:text-light-text">{t('buyTemplate')}</h3>
-            <p className="text-xs text-gray-400 dark:text-neutral-600">{t('templateDesc')}</p>
+            <h3 className="text-base font-black text-white dark:text-black uppercase tracking-tight">{t('buyTemplate')}</h3>
+            <p className="text-xs text-gray-400 dark:text-gray-500 mt-1 font-medium">{t('templateDesc')}</p>
           </div>
-          <span className="text-[10px] font-bold bg-green-900/20 dark:bg-green-900/40 text-green-400 dark:text-green-600 px-2 py-1 rounded border border-green-900/50 dark:border-green-800">{t('savePrice')}</span>
+          <span className="text-[9px] font-black bg-green-500/10 dark:bg-green-50 text-green-500 dark:text-green-600 px-3 py-1.5 rounded-lg border border-green-500/20">{t('savePrice')}</span>
         </div>
-        <a href="https://lynk.id/fasuya" target="_blank" rel="noreferrer" className="w-full block text-center text-gray-400 dark:text-neutral-700 hover:text-white dark:hover:text-neutral-800 text-sm font-medium py-2 rounded-lg transition-colors hover:bg-ash-darker dark:hover:bg-light-border">{t('buyViaLynk')}</a>
+        <a href="https://lynk.id/fasuya" target="_blank" rel="noreferrer" className="w-full block text-center text-gray-400 dark:text-gray-600 hover:text-white dark:hover:text-black text-xs font-black py-3 rounded-xl transition-all bg-ash-darker dark:bg-gray-100 hover:bg-neutral-700 dark:hover:bg-gray-200 border-b-4 border-black/20 active:border-b-0 active:translate-y-1 uppercase tracking-widest">
+            {t('buyViaLynk')}
+        </a>
       </div>
 
       {/* Modal Popup (Confirmation) */}
@@ -318,53 +321,53 @@ const Pricing = ({ selectedTheme, onNavigate, setSelectedTheme }) => {
             onClick={() => setShowModal(false)}
           ></div>
           
-          <div className="relative bg-ash-surface dark:bg-light-surface border-t sm:border border-ash-darker dark:border-neutral-700 w-full max-w-lg sm:rounded-2xl rounded-t-3xl p-6 shadow-2xl animate-fade-in-up max-h-[85vh] overflow-y-auto pb-24 sm:pb-6">
+          <div className="relative bg-ash-surface dark:bg-white w-full max-w-lg sm:rounded-3xl rounded-t-3xl p-6 shadow-2xl animate-fade-in-up max-h-[85vh] overflow-y-auto pb-24 sm:pb-6 border border-ash-darker dark:border-gray-200">
             <button 
               onClick={() => setShowModal(false)} 
-              className="absolute top-4 right-4 text-gray-400 hover:text-white bg-ash-darker hover:bg-neutral-700 rounded-full p-1.5 transition-colors z-10"
+              className="absolute top-4 right-4 text-gray-400 hover:text-red-500 bg-ash-darker dark:bg-gray-100 hover:bg-red-500/10 rounded-xl p-2 transition-colors z-10"
             >
-              <X size={20} />
+              <X size={20} strokeWidth={2.5} />
             </button>
 
             {/* Header Modal */}
-            <div className="mb-6 border-b border-ash-darker pb-4">
-              <div className="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-2">
+            <div className="mb-8 border-b border-ash-darker dark:border-gray-100 pb-6 text-center">
+              <div className="inline-block text-[10px] font-black text-indigo-500 bg-indigo-500/10 px-3 py-1 rounded-full uppercase tracking-widest mb-3">
                 Konfirmasi Pesanan
               </div>
-              <h2 className="text-2xl font-bold text-white dark:text-light-text mb-1">
+              <h2 className="text-3xl font-black text-white dark:text-black mb-2 tracking-tight">
                 {selectedPackage.name}
               </h2>
-              <p className={`text-xl font-bold ${selectedPackage.isSpecial ? 'text-amber-400' : 'text-gray-300 dark:text-neutral-700'}`}>
+              <p className={`text-2xl font-black ${selectedPackage.isSpecial ? 'text-amber-400' : 'text-gray-400 dark:text-gray-500'}`}>
                 {selectedPackage.price}
               </p>
             </div>
 
             {/* Content Logic */}
             {selectedTheme ? (
-                <div className="bg-ash-darker/50 dark:bg-light-bg border border-ash-darker dark:border-light-border p-4 rounded-xl flex gap-4 items-center mb-6">
-                    <div className="w-16 h-16 shrink-0 rounded-lg overflow-hidden border border-ash-darker">
+                <div className="bg-ash-darker dark:bg-gray-50 border border-ash-darker dark:border-gray-200 p-4 rounded-2xl flex gap-4 items-center mb-8">
+                    <div className="w-16 h-16 shrink-0 rounded-xl overflow-hidden border border-ash-darker dark:border-gray-200">
                          <img src={selectedTheme.image} alt={selectedTheme.title} className="w-full h-full object-cover" />
                     </div>
                     <div>
-                        <p className="text-[10px] text-gray-400 dark:text-neutral-500 font-bold uppercase tracking-wider mb-0.5">
+                        <p className="text-[9px] text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider mb-1">
                             Desain Pilihanmu:
                         </p>
-                        <h4 className="text-sm font-bold text-white dark:text-light-text line-clamp-1">
+                        <h4 className="text-sm font-black text-white dark:text-black line-clamp-1">
                             {selectedTheme.title}
                         </h4>
-                        <p className="text-[11px] text-indigo-400 dark:text-indigo-600 font-medium">
+                        <p className="text-[11px] text-indigo-400 dark:text-indigo-600 font-bold mt-0.5">
                             {selectedTheme.theme}
                         </p>
                     </div>
                 </div>
             ) : (
-                <div className="bg-yellow-900/10 dark:bg-yellow-100 border border-yellow-500/20 dark:border-yellow-300 p-4 rounded-xl flex gap-3 items-start mb-6">
-                    <AlertCircle size={20} className="text-yellow-500 shrink-0 mt-0.5" />
+                <div className="bg-yellow-500/5 dark:bg-yellow-50 border border-yellow-500/20 dark:border-yellow-200 p-4 rounded-2xl flex gap-3 items-start mb-8">
+                    <AlertCircle size={20} className="text-yellow-500 shrink-0 mt-0.5" strokeWidth={2.5} />
                     <div>
-                        <h4 className="text-sm font-bold text-yellow-200 dark:text-yellow-800 mb-1">
+                        <h4 className="text-sm font-bold text-yellow-400 dark:text-yellow-700 mb-1">
                             Belum Memilih Desain?
                         </h4>
-                        <p className="text-xs text-gray-400 dark:text-yellow-900/80 leading-relaxed">
+                        <p className="text-xs text-gray-400 dark:text-yellow-800/70 leading-relaxed font-medium">
                             Tidak masalah! Kita bisa diskusi dulu di WhatsApp untuk menentukan desain yang cocok buatmu.
                         </p>
                     </div>
@@ -375,16 +378,16 @@ const Pricing = ({ selectedTheme, onNavigate, setSelectedTheme }) => {
               href={generateWALink()}
               target="_blank" 
               rel="noreferrer"
-              className={`w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all shadow-lg group
+              className={`w-full py-4 rounded-xl font-black text-sm flex items-center justify-center gap-2 transition-all shadow-lg group border-b-4 active:border-b-0 active:translate-y-1 uppercase tracking-widest
                 ${selectedPackage.id === 'exclusive' 
-                  ? 'bg-gradient-to-r from-amber-700 to-amber-600 hover:from-amber-600 hover:to-amber-500 text-white shadow-amber-900/30' 
-                  : 'bg-gradient-to-r from-green-700 to-green-600 hover:from-green-600 hover:to-green-500 text-white shadow-green-900/30'}
+                  ? 'bg-amber-500 hover:bg-amber-400 text-white border-amber-700 shadow-amber-900/30' 
+                  : 'bg-green-500 hover:bg-green-400 text-white border-green-700 shadow-green-900/30'}
               `}
             >
               Lanjut ke WhatsApp 
-              <MessageCircle size={20} className="group-hover:scale-110 transition-transform" />
+              <MessageCircle size={18} className="group-hover:scale-110 transition-transform" strokeWidth={3} />
             </a>
-            <p className="text-center text-[10px] text-gray-500 dark:text-neutral-500 mt-3">
+            <p className="text-center text-[10px] text-gray-500 dark:text-gray-400 mt-4 font-medium">
               Tenang, ini baru chat kok. Belum ada transaksi.
             </p>
           </div>

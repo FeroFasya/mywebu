@@ -3,39 +3,59 @@ import { Home, Grid, Tag, Info } from 'lucide-react';
 
 const BottomNav = ({ activeTab, setActiveTab }) => {
   const navItems = [
-    { id: 'home', label: 'Home', icon: <Home size={20} /> },
-    { id: 'catalog', label: 'Desain', icon: <Grid size={20} /> },
-    { id: 'pricing', label: 'Order', icon: <Tag size={20} /> },
-    { id: 'profile', label: 'Tentang', icon: <Info size={20} /> },
+    { id: 'home', label: 'Home', icon: <Home size={20} strokeWidth={2.5} /> },
+    { id: 'catalog', label: 'Desain', icon: <Grid size={20} strokeWidth={2.5} /> },
+    { id: 'pricing', label: 'Order', icon: <Tag size={20} strokeWidth={2.5} /> },
+    { id: 'profile', label: 'Tentang', icon: <Info size={20} strokeWidth={2.5} /> },
   ];
 
   return (
-    <div className="fixed bottom-0 left-0 w-full z-50">
-      <div className="max-w-md md:max-w-4xl lg:max-w-7xl mx-auto">
-        {/* MIKI UPDATE: Ganti bg-neutral jadi bg-ash-surface, border jadi ash-darker, dan rounded-t-3xl */}
-        <div className="bg-ash-surface/95 dark:bg-light-bg/80 backdrop-blur-lg border-t border-ash-darker dark:border-light-border px-6 py-3 flex justify-between items-center relative transition-colors duration-500 rounded-t-3xl shadow-[0_-5px_20px_rgba(0,0,0,0.2)]">
+    <div className="fixed bottom-0 left-0 w-full z-50 pointer-events-none">
+      <div className="max-w-md md:max-w-4xl lg:max-w-7xl mx-auto pointer-events-auto">
+        
+        {/* Container Utama */}
+        <div className="bg-ash-surface dark:bg-white border-t-4 border-ash-darker dark:border-gray-200 px-6 py-3 flex justify-between items-end relative transition-colors duration-500 rounded-t-3xl shadow-[0_-5px_20px_rgba(0,0,0,0.1)] pb-5 md:pb-3">
           
-          {/* MIKI: Indikator Glow yang bergerak */}
-          <div className="absolute top-0 h-[1px] bg-gradient-to-r from-transparent via-indigo-500 to-transparent w-full left-0 opacity-50"></div>
+          {navItems.map((item) => {
+            const isActive = activeTab === item.id;
+            
+            return (
+              <button
+                key={item.id}
+                onClick={() => setActiveTab(item.id)}
+                className="group flex flex-col items-center gap-1 relative focus:outline-none"
+              >
+                {/* MIKI UPDATE: 'Ngaceng' Reduced.
+                   - Translate Y dikurangi dari -4 jadi -2.
+                   - Shadow dikurangi sedikit.
+                */}
+                <div 
+                    className={`
+                        p-3 rounded-xl transition-all duration-300 flex items-center justify-center
+                        ${isActive 
+                            ? 'bg-indigo-500 text-white border-b-4 border-indigo-700 -translate-y-2 shadow-md shadow-indigo-500/30' 
+                            : 'bg-transparent text-gray-400 dark:text-gray-400 hover:bg-neutral-800 dark:hover:bg-gray-100 border-b-4 border-transparent'
+                        }
+                    `}
+                >
+                  {item.icon}
+                </div>
 
-          {navItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => setActiveTab(item.id)}
-              className={`flex flex-col items-center gap-1 transition-all duration-300 ${
-                activeTab === item.id 
-                  ? 'text-indigo-400 dark:text-indigo-500 transform -translate-y-1' 
-                  : 'text-gray-500 dark:text-neutral-400 hover:text-ash-text dark:hover:text-neutral-600'
-              }`}
-            >
-              <div className={`p-1.5 rounded-xl transition-all ${activeTab === item.id ? 'bg-ash dark:bg-indigo-500/15' : ''}`}>
-                {item.icon}
-              </div>
-              <span className={`text-[10px] font-medium ${activeTab === item.id ? 'opacity-100' : 'opacity-0 h-0 overflow-hidden'} transition-all`}>
-                {item.label}
-              </span>
-            </button>
-          ))}
+                {/* Label */}
+                <span 
+                    className={`
+                        text-[10px] font-bold tracking-wide transition-all duration-300 absolute -bottom-1
+                        ${isActive 
+                            ? 'opacity-100 translate-y-0 text-indigo-400 dark:text-indigo-600' 
+                            : 'opacity-0 translate-y-1 text-gray-400'
+                        }
+                    `}
+                >
+                  {item.label}
+                </span>
+              </button>
+            );
+          })}
         </div>
       </div>
     </div>

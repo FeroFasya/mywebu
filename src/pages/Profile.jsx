@@ -193,7 +193,7 @@ const Profile = () => {
           <div className="mt-6 bg-ash-surface dark:bg-light-surface border border-ash-darker dark:border-light-border rounded-xl p-4 shadow-inner shadow-black/20">
             <div className="grid grid-cols-3 gap-4 text-center">
               <div>
-                <div className="text-2xl font-bold text-indigo-400 dark:text-indigo-600">10+</div>
+                <div className="text-2xl font-bold text-indigo-400 dark:text-indigo-600">30+</div>
                 <div className="text-[10px] text-gray-400 dark:text-neutral-600 mt-1">Projects Done</div>
               </div>
               <div>
