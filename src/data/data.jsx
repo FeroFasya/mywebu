@@ -24,8 +24,8 @@ export const portfolioItems = [
     id: 2,
     title: "Soft Girl / Coquette",
     category: "Personal Brand",
-    image: "/images/softgirl.png", 
-    color: "from-pink-400 to-yellow-400", 
+    image: "/images/softgirl.png",
+    color: "from-pink-400 to-yellow-400",
     desc: "Desain manis dengan palet warna pastel yang lembut.",
     demoLink: "https://softgirlfero.netlify.app/"
   },
@@ -33,17 +33,17 @@ export const portfolioItems = [
     id: 3,
     title: "Obsidian Roast",
     category: "Cafe / Resto",
-    image: "/images/obsidian.jpg", 
-    color: "from-zinc-900 to-stone-800", 
+    image: "/images/obsidian.jpg",
+    color: "from-zinc-900 to-stone-800",
     desc: "Premium long-form storytelling landing page. Mengusung estetika 'Dark Luxury' dengan alur narasi yang mendalam, cocok untuk brand kopi eksklusif.",
-    demoLink: "https://obsidianfero.netlify.app/" 
+    demoLink: "https://obsidianfero.netlify.app/"
   },
   {
     id: 4,
     title: "Paws & Whiskers",
     category: "Pet Lovers",
-    image: "/images/paws.jpg", 
-    color: "from-orange-400 to-teal-400", 
+    image: "/images/paws.jpg",
+    color: "from-orange-400 to-teal-400",
     desc: "Tema super gemoy dengan desain rounded dan animasi playful. Spesial buat Pet Shop & Grooming.",
     demoLink: "https://pawsfero.netlify.app/"
   },
@@ -51,25 +51,25 @@ export const portfolioItems = [
     id: 5,
     title: "Velvet & Ember",
     category: "Cafe / Resto",
-    image: "/images/velvet.jpg", 
-    color: "from-stone-900 to-amber-900", 
+    image: "/images/velvet.jpg",
+    color: "from-stone-900 to-amber-900",
     desc: "Premium editorial landing page untuk restoran kelas atas. Menampilkan layout arsitektural yang elegan dengan fokus pada atmosfer dan storytelling kuliner.",
     demoLink: "https://velvetfero.netlify.app/"
   },
   {
     id: 6,
-    title: "Kawaii Bento Grid", 
+    title: "Kawaii Bento Grid",
     category: "Creative Portfolio",
-    image: "/images/bento.png", 
-    color: "from-blue-400 to-pink-400", 
+    image: "/images/bento.png",
+    color: "from-blue-400 to-pink-400",
     desc: "Layout modular kotak-kotak ala Jepang yang modern. Dilengkapi fitur Spotify Embed & Map.",
-    demoLink: "https://bentofero.netlify.app/" 
+    demoLink: "https://bentofero.netlify.app/"
   },
   {
     id: 7,
     title: "Elegant Business",
     category: "UMKM / Jasa",
-    image: "/images/business.jpg", 
+    image: "/images/business.jpg",
     color: "from-orange-400 to-rose-600",
     desc: "Tampilan profesional untuk membangun kepercayaan klien bisnis.",
     demoLink: "https://myelegantbusiness.netlify.app/"
@@ -87,7 +87,7 @@ export const portfolioItems = [
     id: 9,
     title: "Coffee Talk",
     category: "Personal Brand",
-    image: "/images/coffe.jpg", 
+    image: "/images/coffe.jpg",
     color: "from-brown-500 to-yellow-600",
     desc: "Desain warm & cozy, cocok buat pecinta kopi dan senja.",
     demoLink: "https://coffemyfero.netlify.app/"
@@ -96,8 +96,8 @@ export const portfolioItems = [
     id: 10,
     title: "The Bistro",
     category: "Cafe / Resto",
-    image: "/images/bistro.jpg", 
-    color: "from-red-500 to-yellow-500", 
+    image: "/images/bistro.jpg",
+    color: "from-red-500 to-yellow-500",
     desc: "Tema kuliner menggugah selera Dilengkapi tombol Direct Order (WA/GoFood) untuk konversi penjualan instan.",
     demoLink: "https://bistrofero.netlify.app/"
   },
@@ -105,8 +105,8 @@ export const portfolioItems = [
     id: 11,
     title: "Sage Roastery",
     category: "Cafe / Resto",
-    image: "/images/sage.jpg", 
-    color: "from-emerald-800 to-stone-100", 
+    image: "/images/sage.jpg",
+    color: "from-emerald-800 to-stone-100",
     desc: "Desain editorial modern dengan palet warna natural yang menenangkan. Mengedepankan visual 'Slow Living' untuk arsip digital cafe yang estetik.",
     demoLink: "https://sagefero.netlify.app/"
   },
@@ -114,8 +114,8 @@ export const portfolioItems = [
     id: 12,
     title: "Midnight Violet",
     category: "Personal Brand",
-    image: "/images/violet.jpg", 
-    color: "from-purple-900 to-indigo-900", 
+    image: "/images/violet.jpg",
+    color: "from-purple-900 to-indigo-900",
     desc: "Tema Glassmorphism mewah dengan nuansa Dark Neon. Cocok untuk Web3, Tech, atau Personal Brand futuristik.",
     demoLink: "https://violetfero.netlify.app/"
   },
@@ -123,7 +123,7 @@ export const portfolioItems = [
     id: 13,
     title: "Cyber Gamer",
     category: "Gaming / Creator",
-    image: "/images/gaming.jpg", 
+    image: "/images/gaming.jpg",
     color: "from-emerald-400 to-cyan-600",
     desc: "Tema futuristik neon untuk streamer dan gamer profesional.",
     demoLink: "https://mygamingfero.netlify.app/"
@@ -132,7 +132,7 @@ export const portfolioItems = [
     id: 14,
     title: "Pixel Art",
     category: "Creative Portfolio",
-    image: "/images/pixel.jpg", 
+    image: "/images/pixel.jpg",
     color: "from-pink-500 to-purple-600",
     desc: "Tema retro pixel art untuk seniman digital dan ilustrator.",
     demoLink: "https://pixelartfero.netlify.app/"
@@ -141,8 +141,8 @@ export const portfolioItems = [
     id: 15,
     title: "Streamer Hub",
     category: "Gaming / Creator",
-    image: "/images/streamer.jpg", 
-    color: "from-purple-600 to-pink-500", 
+    image: "/images/streamer.jpg",
+    color: "from-purple-600 to-pink-500",
     desc: "Tema broadcast modern untuk Streamer & VTuber. Fitur lengkap: Jadwal Live, Embed Video, & Tombol Donasi.",
     demoLink: "https://streamerfero.netlify.app/"
   },
@@ -150,8 +150,8 @@ export const portfolioItems = [
     id: 16,
     title: "Glow Studio",
     category: "UMKM / Jasa",
-    image: "/images/glow.jpg", 
-    color: "from-orange-200 to-yellow-200", 
+    image: "/images/glow.jpg",
+    color: "from-orange-200 to-yellow-200",
     desc: "Tema salon kecantikan premium dengan nuansa Nude & Gold. Fitur Pricelist Service & Booking WhatsApp.",
     demoLink: "https://glowfero.netlify.app/"
   },
@@ -159,8 +159,8 @@ export const portfolioItems = [
     id: 17,
     title: "The Garage",
     category: "UMKM / Jasa",
-    image: "/images/garage.jpg", 
-    color: "from-gray-900 to-red-600", 
+    image: "/images/garage.jpg",
+    color: "from-gray-900 to-red-600",
     desc: "Tema maskulin industrial untuk Bengkel, Barbershop, atau Gym. Desain bold dengan tipografi yang kuat.",
     demoLink: "https://garagefero.netlify.app/"
   },
@@ -168,8 +168,8 @@ export const portfolioItems = [
     id: 18,
     title: "EduFocus",
     category: "Education / Course",
-    image: "/images/edu.jpg", 
-    color: "from-blue-600 to-indigo-500", 
+    image: "/images/edu.jpg",
+    color: "from-blue-600 to-indigo-500",
     desc: "Landing page promosi kursus/bimbel. Fitur katalog kelas dengan tombol Direct WhatsApp untuk pendaftaran manual.",
     demoLink: "https://edufero.netlify.app/"
   },
@@ -177,8 +177,8 @@ export const portfolioItems = [
     id: 19,
     title: "Travel Journal",
     category: "Hobby / Blog",
-    image: "/images/travel.jpg", 
-    color: "from-green-600 to-emerald-500", 
+    image: "/images/travel.jpg",
+    color: "from-green-600 to-emerald-500",
     desc: "Tema blog travel dengan gaya editorial majalah. Fitur Parallax Hero dan layout cerita zig-zag yang estetik.",
     demoLink: "https://travelfero.netlify.app/"
   },
@@ -186,8 +186,8 @@ export const portfolioItems = [
     id: 20,
     title: "The Minimalist",
     category: "Personal Brand",
-    image: "/images/minimals.jpg", 
-    color: "from-purple-500 to-indigo-600", 
+    image: "/images/minimals.jpg",
+    color: "from-purple-500 to-indigo-600",
     desc: "Desain bersih untuk konten kamu yang ingin fokus pada portofolio.",
     demoLink: "https://client-fero.netlify.app"
   }
@@ -196,32 +196,32 @@ export const portfolioItems = [
 // Data Special Edition
 export const specialItems = [
   {
-    id: 's1', 
+    id: 's1',
     title: "The Urban Resto",
     theme: "Premium F&B Edition",
     category: "Cafe / Resto",
-    price: "Rp300.000", 
-    image: "/images/urban.mp4", 
+    price: "Rp300.000/ $30",
+    image: "/images/urban.mp4",
     desc: "Landing page kuliner 'Next Level'. Dilengkapi fitur Filter Menu & Maps Dark Mode.",
     features: ["Fitur Filter Makanan/Minuman", "Embed Google Maps", "Direct Link Gofood"]
   },
   {
-    id: 's2', 
+    id: 's2',
     title: "The Noir / Brutalism",
     theme: "High-End Dark Edition",
     category: "Personal Brand",
-    price: "Rp400.000", 
-    image: "/images/noir.mp4", 
+    price: "Rp400.000 / $35",
+    image: "/images/noir.mp4",
     desc: "Tema monokrom brutalist dengan efek Noise Grain & Hover Reveal. Khusus buat kreator yang ingin terlihat misterius, mahal, dan edgy.",
     features: ["Noise Texture Overlay", "Grayscale to Color Hover", "Marquee Animation", "Custom Crosshair Cursor"]
   },
   // --- NEW SPECIAL ITEM (Rival The Noir) ---
   {
-    id: 's3', 
+    id: 's3',
     title: "The White Luxury",
     theme: "High-End Editorial Edition",
     category: "Personal Brand",
-    price: "Rp400.000", // Harganya sama kayak Noir, biar selevel
+    price: "Rp400.000 / $35", // Harganya sama kayak Noir, biar selevel
     image: "/images/luxury_white.mp4", // Rekam layar efek knockout-nya!
     desc: "Tema Editorial Mahal dengan teknik 'Partial Overlay' & 'Knockout Text'. Teks transparan yang membelah background statis menciptakan ilusi kedalaman.",
     features: ["Knockout Text Effect", "Partial Overlay Layout", "Custom Cursor Interaction", "Parallax Scroll Reveal"]
@@ -232,7 +232,7 @@ export const specialItems = [
     title: "Soft Archive / Memory Room",
     theme: "Dreamy Pastel Edition",
     category: "Creative Portfolio",
-    price: "Rp300.000",
+    price: "Rp300.000 / $25",
     image: "/images/gallerydigital.mp4",
     desc: "Galeri online untuk menampilkan karya terpilih dengan tampilan bersih dan emosional.",
     features: [
@@ -243,12 +243,12 @@ export const specialItems = [
     ]
   },
   {
-    id: 's4', 
+    id: 's4',
     title: "Domain Expansion: Void",
     theme: "Special Anime Edition",
     category: "Creative Portfolio",
-    price: "Rp350.000",
-    image: "/images/gojo_final.mp4", 
+    price: "Rp350.000 / $30",
+    image: "/images/gojo_final.mp4",
     desc: "Tema Ungu Gelap dengan efek partikel 'Infinity'. Cocok buat wibu elit yang mau flexing.",
     features: ["Animasi Infinity Scroll", "Cursor Custom", "Dark Mode Only"]
   }
@@ -259,14 +259,14 @@ export const pricingTiers = [
   {
     id: 'basic',
     name: "Paket Pelajar",
-    price: "Rp225.000",
+    price: "Rp225.000 / $20",
     desc: "Simpel, cepat, dan tanpa biaya bulanan.",
     bestFor: "Tugas Sekolah / Link Bio",
     icon: <Smartphone size={20} className="text-blue-400" />,
     features: [
-      "1 Halaman Website Simpel", 
-      "Tampilan Bagus di HP & Laptop", 
-      "Tombol Chat ke WhatsApp", 
+      "1 Halaman Website Simpel",
+      "Tampilan Bagus di HP & Laptop",
+      "Tombol Chat ke WhatsApp",
       "Hosting Gratis Selamanya",
       "Domain Numpang (netlify.app)",
       "Animasi dasar (hover & fade-in)"
@@ -277,15 +277,15 @@ export const pricingTiers = [
   {
     id: 'standard',
     name: "Paket Normal",
-    price: "Rp525.000",
+    price: "Rp525.000 / $45",
     desc: "Tampil beda dan terlihat profesional.",
     bestFor: "Mahasiswa / Fresh Grad / Jobseeker",
     icon: <Star size={20} className="text-yellow-400" />,
     features: [
-      "Semua Fitur Paket Pelajar", 
+      "Semua Fitur Paket Pelajar",
       "Gratis Domain .MY.ID (1 Tahun)",
-      "Bebas Request Warna & Font", 
-      "Galeri Portofolio (Pamer Karya)", 
+      "Bebas Request Warna & Font",
+      "Galeri Portofolio (Pamer Karya)",
       "Sambung ke IG & TikTok",
       "Animasi Lanjutan"
     ],
@@ -295,7 +295,7 @@ export const pricingTiers = [
   {
     id: 'premium',
     name: "Paket Premium", // Or "Pro Creator" if you want to sound cool
-    price: "Rp750.000",
+    price: "Rp750.000 / $65",
     desc: "Tampilan mewah, interaktif, dan terima beres.", // Changed to emphasize convenience
     bestFor: "Influencer / Selebgram",
     icon: <Shield size={20} className="text-purple-400" />,
@@ -314,20 +314,20 @@ export const pricingTiers = [
   {
     id: 'exclusive',
     name: "Bisnis Eksklusif",
-    price: "Mulai Rp1.250.000",
+    price: "Rp1.250.000 / $100",
     desc: "Investasi aset digital serius untuk usahamu.",
     bestFor: "UMKM / Brand / Perusahaan",
     icon: <Crown size={20} className="text-amber-400" />,
     features: [
-      "Gratis Domain .COM / .ID (1 Tahun)", 
-      "Email Bisnis (admin@namausaha.com)", 
-      "Desain Premium (Tanpa Template)", 
-      "Terdaftar di Google Maps", 
-      "Garansi Maintenance 1 Bulan"   
+      "Gratis Domain .COM / .ID (1 Tahun)",
+      "Email Bisnis (admin@namausaha.com)",
+      "Desain Premium (Tanpa Template)",
+      "Terdaftar di Google Maps",
+      "Garansi Maintenance 1 Bulan"
     ],
     highlight: false,
     borderColor: "border-amber-500/80",
-    isSpecial: true 
+    isSpecial: true
   }
 ];
 // FAQ Data
