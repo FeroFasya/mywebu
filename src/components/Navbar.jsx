@@ -17,7 +17,7 @@ const Navbar = () => {
              {/* MIKI FIX: Kembali ke Bulat Sempurna (rounded-full) */}
              <div className="w-10 h-10 bg-ash-darker dark:bg-gray-100 rounded-full border-2 border-ash-darker dark:border-gray-200 overflow-hidden shadow-sm p-0.5">
                 <img
-                    src="/images/mywebu.png"
+                    src="/images/icon.png"
                     className="w-full h-full object-contain rounded-full"
                     alt="Fero Works Logo"
                 />

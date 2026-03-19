@@ -295,7 +295,7 @@ export const pricingTiers = [
   {
     id: 'premium',
     name: "Paket Premium", // Or "Pro Creator" if you want to sound cool
-    price: "Rp750.000 / $65",
+    price: "Rp850.000 / $75",
     desc: "Tampilan mewah, interaktif, dan terima beres.", // Changed to emphasize convenience
     bestFor: "Influencer / Selebgram",
     icon: <Shield size={20} className="text-purple-400" />,

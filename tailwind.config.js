@@ -7,7 +7,7 @@ export default {
   ],
   theme: {
     extend: {
-      // MIKI: Daftarkan Font Baru Disini
+      // MIKI: Daftarkan Font Baru Disini. Ini akan menimpa font-sans bawaan.
       fontFamily: {
         sans: ['"Plus Jakarta Sans"', 'sans-serif'],
       },
@@ -31,7 +31,7 @@ export default {
         }
       },
       colors: {
-        // Light mode colors (yang kamu punya)
+        // Light mode colors
         'light-bg': '#fafaf9',
         'light-surface': '#f5f5f4',
         'light-border': '#e7e5e4',

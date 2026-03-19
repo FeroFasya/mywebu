@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-import { CheckCircle, MessageCircle, X, Crown, ArrowRight, Sparkles, Minus, ChevronDown, ChevronUp, AlertCircle, Lock } from 'lucide-react';
-import { pricingTiers, USER_INFO } from '../data/data';
+import React, { useState, useEffect } from 'react';
+import { CheckCircle, MessageCircle, X, Crown, ArrowRight, Sparkles, Minus, ChevronDown, ChevronUp, AlertCircle, Lock, Smartphone, Star, Shield } from 'lucide-react';
+import { USER_INFO, pricingTiers as pricingData } from '../data/data'; 
 import PriceDisplay from '../components/PriceDisplay';
 import { useLanguage } from '../contexts/LanguageContext';
 
-// --- DATA TABLE ---
 const comparisonData = [
   { label: "Terima Beres (Saya Inputkan)", basic: true, standard: true, premium: true, exclusive: true },
   { label: "Website Pages", basic: "1 Page", standard: "1 Page", premium: "Long Page", exclusive: "Custom" },
@@ -18,13 +17,11 @@ const comparisonData = [
   { label: "Hak Akses & File Mentah", basic: "Dapat File Website", standard: "Dapat File Website", premium: "Gmail Key", exclusive: "Full Access" },
 ];
 
-// --- MIKI: DEFINISI KATEGORI BISNIS (KELOMPOK) ---
-// Sisanya otomatis dianggap PRIBADI.
 const businessCategories = [
   "Cafe / Resto",
   "UMKM / Jasa",
   "Education / Course",
-  "Wedding" // Jaga-jaga kalau nanti ada
+  "Wedding"
 ];
 
 const Pricing = ({ selectedTheme, onNavigate, setSelectedTheme }) => {
@@ -33,7 +30,27 @@ const Pricing = ({ selectedTheme, onNavigate, setSelectedTheme }) => {
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [showComparison, setShowComparison] = useState(false);
 
-  // --- MIKI: LOGIC PENENTU TIPE DESAIN ---
+  // STATE UNTUK DATA
+  const [pricingTiers, setPricingTiers] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // --- MIKI: AMBIL DATA LANGSUNG DARI data.jsx ---
+  useEffect(() => {
+    try {
+      // Langsung ambil dari pricingData yang di-import
+      const finalData = pricingData.map((item) => ({
+        ...item,
+        // Icon sudah ada di data.jsx dari export, jadi gak perlu tambahin lagi
+      }));
+
+      setPricingTiers(finalData);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Gagal memproses data paket:", error);
+      setIsLoading(false);
+    }
+  }, []);
+
   const isBusinessDesign = selectedTheme && businessCategories.includes(selectedTheme.category);
   const isPersonalDesign = selectedTheme && !isBusinessDesign;
 
@@ -73,7 +90,6 @@ const Pricing = ({ selectedTheme, onNavigate, setSelectedTheme }) => {
   return (
     <div className="space-y-10 pb-12 animate-fade-in">
 
-      {/* Header Section */}
       <div>
         <h2 className="text-3xl font-black text-ash-text dark:text-light-text tracking-tight">
           Investasi{" "}
@@ -84,7 +100,13 @@ const Pricing = ({ selectedTheme, onNavigate, setSelectedTheme }) => {
         <p className="text-gray-400 dark:text-neutral-500 text-sm font-medium mt-1">Pilih paket sesuai kebutuhanmu sekarang.</p>
       </div>
 
-      {/* --- SELECTED DESIGN BANNER (Hybrid Clean) --- */}
+      {isLoading && (
+        <div className="flex justify-center items-center py-10">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-500"></div>
+          <span className="ml-3 text-gray-400 text-sm">Sedang memuat paket dari server...</span>
+        </div>
+      )}
+
       {selectedTheme && (
         <div className="relative bg-ash-surface dark:bg-white rounded-3xl border border-ash-darker dark:border-gray-200 p-1 flex items-center justify-between shadow-lg shadow-black/10 animate-fade-in-up pr-6">
           <div className="flex items-center gap-4">
@@ -129,13 +151,13 @@ const Pricing = ({ selectedTheme, onNavigate, setSelectedTheme }) => {
           let isLocked = false;
           let lockMessage = "";
 
-          // Aturan 1: Jika Desain KELOMPOK (Bisnis), Paket Pelajar (basic) dikunci.
+          // Aturan 1: Jika Desain KELOMPOK (Bisnis), Paket 'basic' dikunci.
           if (isBusinessDesign && tier.id === 'basic') {
             isLocked = true;
             lockMessage = "Pilihan paket ini tidak tersedia untuk desain pilihan ini (Desain Kompleks).";
           }
 
-          // Aturan 2: Jika Desain PRIBADI, Paket Sultan (exclusive) dikunci.
+          // Aturan 2: Jika Desain PRIBADI, Paket 'exclusive' dikunci.
           if (isPersonalDesign && tier.id === 'exclusive') {
             isLocked = true;
             lockMessage = "Pilihan paket ini ditujukan untuk custom desain. Silahkan batalkan pilihan desain template untuk memilih ini.";
@@ -155,7 +177,6 @@ const Pricing = ({ selectedTheme, onNavigate, setSelectedTheme }) => {
                 }
                 `}
             >
-              {/* --- MIKI: OVERLAY PESAN KUNCI --- */}
               {isLocked && (
                 <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-4 text-center bg-ash-darker/80 dark:bg-white/60 backdrop-blur-[2px] rounded-3xl">
                   <Lock size={32} className="text-gray-500 mb-2" />
@@ -168,7 +189,6 @@ const Pricing = ({ selectedTheme, onNavigate, setSelectedTheme }) => {
                 </div>
               )}
 
-              {/* Badges - Sticker Style */}
               {!isLocked && tier.highlight && (
                 <div className="absolute -top-3 right-4 bg-indigo-500 text-white text-[10px] font-black px-3 py-1 rounded-lg shadow-md border-b-2 border-indigo-700 flex items-center gap-1 transform rotate-2">
                   <Sparkles size={10} strokeWidth={3} /> POPULAR
@@ -232,7 +252,6 @@ const Pricing = ({ selectedTheme, onNavigate, setSelectedTheme }) => {
                 ))}
               </ul>
 
-              {/* BUTTON - POP STYLE (Border Bottom Thick) */}
               <button
                 disabled={isLocked}
                 onClick={() => !isLocked && handleOrderClick(tier)}
@@ -254,7 +273,6 @@ const Pricing = ({ selectedTheme, onNavigate, setSelectedTheme }) => {
         })}
       </div>
 
-      {/* Comparison Table (Clean & Modern) */}
       <div className="py-4">
         <button
           onClick={() => setShowComparison(!showComparison)}
@@ -297,14 +315,12 @@ const Pricing = ({ selectedTheme, onNavigate, setSelectedTheme }) => {
         )}
       </div>
 
-      {/* Elegant Divider */}
       <div className="flex items-center py-4 px-8 opacity-50">
         <div className="h-0.5 flex-1 bg-ash-darker dark:bg-gray-200 rounded-full"></div>
         <span className="px-4 text-[10px] font-black text-gray-500 dark:text-gray-400 uppercase tracking-widest">{t('or')}</span>
         <div className="h-0.5 flex-1 bg-ash-darker dark:bg-gray-200 rounded-full"></div>
       </div>
 
-      {/* Footer Link (Template) - Hybrid Style */}
       <div className="bg-ash-surface dark:bg-white p-6 rounded-3xl border-2 border-dashed border-ash-darker dark:border-gray-300 hover:border-gray-500 dark:hover:border-gray-400 transition-colors">
         <div className="flex justify-between items-start mb-4">
           <div>
@@ -318,7 +334,6 @@ const Pricing = ({ selectedTheme, onNavigate, setSelectedTheme }) => {
         </a>
       </div>
 
-      {/* Modal Popup (Confirmation) */}
       {showModal && selectedPackage && (
         <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center sm:p-4">
           <div
@@ -334,7 +349,6 @@ const Pricing = ({ selectedTheme, onNavigate, setSelectedTheme }) => {
               <X size={20} strokeWidth={2.5} />
             </button>
 
-            {/* Header Modal */}
             <div className="mb-8 border-b border-ash-darker dark:border-gray-100 pb-6 text-center">
               <div className="inline-block text-[10px] font-black text-indigo-500 bg-indigo-500/10 px-3 py-1 rounded-full uppercase tracking-widest mb-3">
                 Konfirmasi Pesanan
@@ -346,13 +360,11 @@ const Pricing = ({ selectedTheme, onNavigate, setSelectedTheme }) => {
                 <PriceDisplay
                   price={selectedPackage.price}
                   isSpecial={selectedPackage.isSpecial}
-                  // In modal we want clear visibility, so we might not need highlight styles drastically unless it matches card
-                  isHighlight={false} // Keeping it neutral for readability in modal
+                  isHighlight={false} 
                 />
               </div>
             </div>
 
-            {/* Content Logic */}
             {selectedTheme ? (
               <div className="bg-ash-darker dark:bg-gray-50 border border-ash-darker dark:border-gray-200 p-4 rounded-2xl flex gap-4 items-center mb-8">
                 <div className="w-16 h-16 shrink-0 rounded-xl overflow-hidden border border-ash-darker dark:border-gray-200">

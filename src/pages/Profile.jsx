@@ -7,7 +7,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 const testimonials = [
   {
     id: 1,
-    name: "Riski Y.",
+    name: "Riski Y",
     role: "Ilustrator/Animator",
     rating: 5,
     text: "Website-nya keren banget dah!",
@@ -16,6 +16,26 @@ const testimonials = [
   },
   {
     id: 2,
+    name: "WeddingBandungku",
+    role: "Wedding Organizer",
+    rating: 5,
+    text: "Mksih kka..",
+    date: "Feb 2026",
+    verified: true,
+    isstarred: true
+  },
+  {
+    id: 3,
+    name: "Miori Sora",
+    role: "VTuber ID",
+    rating: 5,
+    text: "HWAAA BAGUS BGTTTT, Thankyou kakk bagus banget huhu",
+    date: "Feb 2026",
+    verified: true,
+    isstarred: true
+  },
+  {
+    id: 4,
     name: "Mami & Papi",
     role: "Orangtuaku",
     rating: 5,
@@ -23,7 +43,7 @@ const testimonials = [
     date: "Jan 2026",
     verified: false,
     isstarred: false
-  },
+  }
 ];
 
 const Profile = () => {
@@ -86,7 +106,7 @@ const Profile = () => {
                           Feroga Radja F.
                         </h3>
                         <p className="text-xs text-gray-400 dark:text-neutral-600 flex items-center gap-2 mt-1">
-                          @ferogaaa — <span className="text-indigo-400 dark:text-indigo-600 font-semibold">The Developer</span>
+                          @ferouuu — <span className="text-indigo-400 dark:text-indigo-600 font-semibold">The Developer</span>
                         </p>
                     </div>
                     
